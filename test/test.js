@@ -2,7 +2,7 @@ var EvernoteExport = require('../lib/enml2md.js').EvernoteExport,
   should = require('should')
 
 describe('EvernoteExport', function(){
-  describe('#notes()', function(){
+  describe('#notesCount()', function(){
     it('should return `1` for `fiture1.enex`.', function(done){
       testNotesCount('./test/fixtures/fixture1.enex', 1, done);
     });
@@ -14,7 +14,7 @@ describe('EvernoteExport', function(){
 
 function testNotesCount(enml_filename, expect, done) {
   var enml = new EvernoteExport(enml_filename);
-  var count_async = enml.notes();
+  var count_async = enml.notesCount();
   count_async.on('done', function(count) {
     count.should.equal(expect);
     done();

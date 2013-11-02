@@ -14,12 +14,13 @@ describe('EvernoteExport', function(){
 });
 
 describe('Note', function(){
-  describe('.parseNote()', function(){
-    it('should return a note object.', function(){
-      var note_enml = fs.readFileSync('./test/fixtures/note.enex');
-      var note = enml2md.Note.parse(note_enml);
-      note.should.be.an.instanceof(enml2md.Note);
-    });
+  var note_enml = fs.readFileSync('./test/fixtures/note.enex');
+  var note = enml2md.Note.parse(note_enml);
+  it('.parseNote() should return a note object.', function(){
+    note.should.be.an.instanceof(enml2md.Note);
+  });
+  it('#title() should return a title.', function(){
+    note.title().should.equal('a single note fixture');
   });
 });
 

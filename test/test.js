@@ -44,4 +44,7 @@ describe('Note', function() {
     note.tags[0].should.equal('markdown');
     note.tags[1].should.equal('evernote');
   });
+  it('#content should be a Markdown string.', function() {
+    note.content.should.equal('fixture content\n\n');
+  });
 });

@@ -7,5 +7,5 @@ Dependencies
 ------------
 
 - [robrighter/node-xml](https://github.com/robrighter/node-xml)
-- [domchristie/to-markdown](https://github.com/domchristie/to-markdown)
 - [MatthewMueller/cheerio](https://github.com/MatthewMueller/cheerio)
+- [hgilani/html2markdown](https://github.com/hgilani/html2markdown)

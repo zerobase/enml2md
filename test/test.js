@@ -31,4 +31,14 @@ describe('Note', function(){
   it('#title should return a title.', function(){
     note.title.should.equal('a single note fixture');
   });
+  it('#created should return a date.', function(){
+    var date = new Date(2013, 11, 2, 10, 7, 9); // 20131102T100709Z
+    note.created.should.be.an.instanceof(Date);
+    note.created.should.eql(date);
+  });
+  it('#updated should return a date.', function(){
+    var date = new Date(2013, 11, 2, 10, 7, 13); // 20131102T100713Z
+    note.updated.should.be.an.instanceof(Date);
+    note.updated.should.eql(date);
+  });
 });

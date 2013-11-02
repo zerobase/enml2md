@@ -19,8 +19,8 @@ describe('Note', function(){
   it('.parseNote() should return a note object.', function(){
     note.should.be.an.instanceof(enml2md.Note);
   });
-  it('#title() should return a title.', function(){
-    note.title().should.equal('a single note fixture');
+  it('#getTitle() should return a title.', function(){
+    note.getTitle().should.equal('a single note fixture');
   });
 });
 

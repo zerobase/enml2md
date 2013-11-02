@@ -1,0 +1,28 @@
+{
+  "name": "enml2md",
+  "version": "0.0.0",
+  "author": "Ishibashi Hideto <me@ishibashihideto.net>",
+  "description": "Evernote Markup Language to Markdown Converter",
+  "bin": {
+    "enml2md": "./bin/enml2md"
+  },
+  "main": "./lib/enml2md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerobase/enml2md.git"
+  },
+  "keywords": [
+    "evernote",
+    "enml",
+    "enex",
+    "markdown"
+  ],
+  "dependencies" : {
+    "node-xml"   :  "1.0.2",
+    "to-markdown" :  "0.0.1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  }
+}

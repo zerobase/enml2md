@@ -13,17 +13,6 @@ describe('EvernoteExport', function(){
   });
 });
 
-describe('Note', function(){
-  var note_enml = fs.readFileSync('./test/fixtures/note.enex');
-  var note = enml2md.Note.parse(note_enml);
-  it('.parseNote() should return a note object.', function(){
-    note.should.be.an.instanceof(enml2md.Note);
-  });
-  it('#getTitle() should return a title.', function(){
-    note.getTitle().should.equal('a single note fixture');
-  });
-});
-
 function testNotesCount(enml_filename, expect, done) {
   var enml = new enml2md.EvernoteExport(enml_filename);
   var count_async = enml.notesCount();
@@ -32,3 +21,14 @@ function testNotesCount(enml_filename, expect, done) {
     done();
   });
 }
+
+describe('Note', function(){
+  var note_enml = fs.readFileSync('./test/fixtures/note.enex');
+  var note = enml2md.Note.parse(note_enml);
+  it('.parseNote() should return a note object.', function(){
+    note.should.be.an.instanceof(enml2md.Note);
+  });
+  it('#title should return a title.', function(){
+    note.title.should.equal('a single note fixture');
+  });
+});

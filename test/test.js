@@ -1,11 +1,11 @@
-// from Mocha tutorial
+var ENML2Markdown = require('../lib/enml2md.js'),
+  should = require('should')
 
-var assert = require("assert")
-describe('Array', function(){
-  describe('#indexOf()', function(){
-    it('should return -1 when the value is not present', function(){
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
-    })
+describe('ENML2Markdown', function(){
+  describe('#notes()', function(){
+    it('should return `2` for `fiture2.enex`.', function(){
+      var enml = new ENML2Markdown('fixtures/fixture2.enex');
+      enml.notes().should.equal(2);
+    });
   })
 })

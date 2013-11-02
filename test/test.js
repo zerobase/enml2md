@@ -38,4 +38,10 @@ describe('Note', function() {
     note.updated.should.be.an.instanceof(Date);
     note.updated.should.eql(date);
   });
+  it('#tags should be tags array.', function() {
+    note.tags.should.be.an.instanceof(Array);
+    note.tags.length.should.equal(2);
+    note.tags[0].should.equal('markdown');
+    note.tags[1].should.equal('evernote');
+  });
 });

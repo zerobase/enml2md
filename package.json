@@ -6,6 +6,9 @@
   "bin": {
     "enml2md": "./bin/enml2md"
   },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
   "main": "./lib/enml2md",
   "repository": {
     "type": "git",
@@ -23,6 +26,10 @@
     "sax": "0.5.5",
     "mkdirp": "0.3.5",
     "temp": "0.6.0"
+  },
+  "devDependencies": {
+    "mocha": "1.13.0",
+    "should": "2.0.2"
   },
   "license": "MIT",
   "engines": {

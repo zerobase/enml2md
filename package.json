@@ -17,10 +17,10 @@
     "enex",
     "markdown"
   ],
-  "dependencies" : {
-    "node-xml"   :  "1.0.2",
-    "cheerio" : "0.12.3",
-    "html2markdown" : "1.1.0"
+  "dependencies": {
+    "cheerio": "0.12.3",
+    "html2markdown": "1.1.0",
+    "sax": "0.5.5"
   },
   "license": "MIT",
   "engines": {

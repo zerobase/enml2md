@@ -2,22 +2,36 @@ var enml2md = require('../lib/enml2md.js'),
   should = require('should'),
   fs = require('fs')
 
-describe('EvernoteExport', function() {
-  describe('#notesCount()', function() {
-    it('should return a count of notes in a ENML(.enex) file.', function(done) {
-      testNotesCount('./test/fixtures/fixture2.enex', 2, done);
+describe('EvernoteExport(enml_filename)', function() {
+  describe('#each(cbEach, cbEnd)', function() {
+    it('should set total #count at cbEnd()', function(done) {
+      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex');
+      enex.each(function (note) { // callback for each note
+        // do nothing
+      }, function () { // callback for the end
+        enex.count.should.equal(2);
+        done();
+      });
+    });
+    it('should call cbEach(note)', function(done) {
+      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex');
+      var expected_created = new Date(2013, 11, 2, 10, 0, 55); // 20131102T100055Z
+      var expected_updated = new Date(2013, 11, 2, 10, 3, 49); // 20131102T100349Z
+      enex.each(function (note) { // callback for each note
+        note.title.should.equal('Enml2md test fixture note');
+        note.created.should.eql(expected_created);
+        note.updated.should.eql(expected_updated);
+        note.tags.should.contain('markdown');
+        note.tags.should.contain('evernote');
+        note.tags.length.should.equal(2)
+        note.content.should.equal('fixture content\n\n');
+      }, function () { // callback for the end
+        enex.count.should.equal(1);
+        done();
+      });
     });
   });
 });
-
-function testNotesCount(enml_filename, expect, done) {
-  var enml = new enml2md.EvernoteExport(enml_filename);
-  var count_async = enml.notesCount();
-  count_async.on('done', function(count) {
-    count.should.equal(expect);
-    done();
-  });
-}
 
 describe('Note', function() {
   var note_enml = fs.readFileSync('./test/fixtures/note.enex');
@@ -38,7 +52,7 @@ describe('Note', function() {
     note.updated.should.be.an.instanceof(Date);
     note.updated.should.eql(date);
   });
-  it('#tags should be tags array.', function() {
+  it('#tags should be an array of string.', function() {
     note.tags.should.be.an.instanceof(Array);
     note.tags.length.should.equal(2);
     note.tags[0].should.equal('markdown');

@@ -7,7 +7,7 @@
     "enml2md": "./bin/enml2md"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha"
   },
   "main": "./lib/enml2md",
   "repository": {
@@ -32,7 +32,7 @@
     "should": "2.0.2"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=0.10"
+  "engines" : {
+    "node" : ">=0.10"
   }
 }

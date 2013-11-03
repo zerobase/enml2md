@@ -30,8 +30,8 @@ describe('EvernoteExport(enml_filename)', function() {
     })
     it('calls cbEach(note)', function(done) {
       var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
-      var expected_created = new Date(2013, 11, 2, 10, 0, 55); // 20131102T100055Z
-      var expected_updated = new Date(2013, 11, 2, 10, 3, 49); // 20131102T100349Z
+      var expected_created = new Date(2013, 11, 2, 10, 0, 55) // 20131102T100055Z
+      var expected_updated = new Date(2013, 11, 2, 10, 3, 49) // 20131102T100349Z
       var cbEach = function (note) { // callback for each note
         note.title.should.equal('Enml2md test fixture note')
         note.created.should.eql(expected_created)
@@ -60,12 +60,12 @@ describe('Note', function() {
     note.title.should.equal('a single note fixture')
   })
   it('#created is a Date object.', function() {
-    var date = new Date(2013, 11, 2, 10, 7, 9); // 20131102T100709Z
+    var date = new Date(2013, 11, 2, 10, 7, 9) // 20131102T100709Z
     note.created.should.be.an.instanceof(Date)
     note.created.should.eql(date)
   })
   it('#updated is a Date object.', function() {
-    var date = new Date(2013, 11, 2, 10, 7, 13); // 20131102T100713Z
+    var date = new Date(2013, 11, 2, 10, 7, 13) // 20131102T100713Z
     note.updated.should.be.an.instanceof(Date)
     note.updated.should.eql(date)
   })

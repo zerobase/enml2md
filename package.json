@@ -7,7 +7,7 @@
     "enml2md": "./bin/enml2md"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec"
   },
   "main": "./lib/enml2md",
   "repository": {

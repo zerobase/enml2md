@@ -4,15 +4,25 @@ var enml2md = require('../lib/enml2md.js'),
 
 describe('EvernoteExport(enml_filename)', function() {
   describe('#export(directory, cbDone)', function() {
+    var exportDirectory = './test/tmp/export/'
     it('creates an export directory', function(done) {
       var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
-      var exportDirectory = './test/tmp/export/'
       enex.export(exportDirectory, function () {
         fs.stat(exportDirectory, function (err, stats) {
           if (err) throw err
           stats.isDirectory().should.be.true
+          done()
         })
-        done()
+      })
+    })
+    it('creates exported files', function(done) {
+      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      enex.export(exportDirectory, function () {
+        fs.readdir(exportDirectory, function (err, files) {
+          if (err) throw err
+          files.length.should.equal(3)
+          done()
+        })
       })
     })
   })

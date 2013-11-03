@@ -6,18 +6,20 @@ describe('EvernoteExport(enml_filename)', function() {
   describe('#each(cbEach, cbEnd)', function() {
     it('should set total #count at cbEnd()', function(done) {
       var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
-      enex.each(function (note) { // callback for each note
+      var cbEach = function (note) { // callback for each note
         // do nothing
-      }, function () { // callback for the end
+      }
+      var cbEnd = function () { // callback for the end
         enex.count.should.equal(2)
         done()
-      })
+      }
+      enex.each(cbEach, cbEnd)
     })
     it('should call cbEach(note)', function(done) {
       var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
       var expected_created = new Date(2013, 11, 2, 10, 0, 55); // 20131102T100055Z
       var expected_updated = new Date(2013, 11, 2, 10, 3, 49); // 20131102T100349Z
-      enex.each(function (note) { // callback for each note
+      var cbEach = function (note) { // callback for each note
         note.title.should.equal('Enml2md test fixture note')
         note.created.should.eql(expected_created)
         note.updated.should.eql(expected_updated)
@@ -25,10 +27,12 @@ describe('EvernoteExport(enml_filename)', function() {
         note.tags.should.contain('evernote')
         note.tags.length.should.equal(2)
         note.content.should.equal('fixture content\n\n')
-      }, function () { // callback for the end
+      }
+      var cbEnd = function () { // callback for the end
         enex.count.should.equal(1)
         done()
-      })
+      }
+      enex.each(cbEach, cbEnd)
     })
   })
 })

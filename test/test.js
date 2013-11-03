@@ -36,7 +36,7 @@ describe('EvernoteExport(enml_filename)', function() {
 describe('Note', function() {
   var note_enml = fs.readFileSync('./test/fixtures/note.enex')
   var note = enml2md.Note.parse(note_enml)
-  it('.parseNote() should return a note object.', function() {
+  it('.parse() should return a note object.', function() {
     note.should.be.an.instanceof(enml2md.Note)
   })
   it('#title should be a title.', function() {

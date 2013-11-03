@@ -3,27 +3,32 @@ var enml2md = require('../lib/enml2md.js'),
   fs = require('fs')
 
 describe('EvernoteExport(enml_filename)', function() {
+  var temp = require('temp')
+  temp.track()
   describe('#export(directory, cbDone)', function() {
-    var exportDirectory = './test/tmp/export/'
     it('creates an export directory', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
-      enex.export(exportDirectory, function () {
-        fs.stat(exportDirectory, function (err, stats) {
-          if (err) throw err
-          stats.isDirectory().should.be.true
-          done()
+      temp.mkdir('enml2md', function(err, dirPath) {
+        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        enex.export(dirPath, function () {
+          fs.stat(dirPath, function (err, stats) {
+            if (err) throw err
+            stats.isDirectory().should.be.true
+            done()
+          })
         })
-      })
+      });
     })
     it('creates exported files', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
-      enex.export(exportDirectory, function () {
-        fs.readdir(exportDirectory, function (err, files) {
-          if (err) throw err
-          files.length.should.equal(3)
-          done()
+      temp.mkdir('enml2md', function(err, dirPath) {
+        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+        enex.export(dirPath, function () {
+          fs.readdir(dirPath, function (err, files) {
+            if (err) throw err
+            files.length.should.equal(2)
+            done()
+          })
         })
-      })
+      });
     })
   })
   describe('#each(cbEach, cbEnd)', function() {

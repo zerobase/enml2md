@@ -1,4 +1,4 @@
-<note><title>a single note fixture</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<note><title>a single note fixture/test: 1</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
 <en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
 <div>fixture content</div>

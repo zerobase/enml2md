@@ -66,8 +66,12 @@ describe('Note', function() {
   it('.parse() returns a note object.', function() {
     note.should.be.an.instanceof(enml2md.Note)
   })
+  it('#filename(extention) escapes title string.', function() {
+    note.filename('.md').should.equal('a single note fixture test  1.md')
+    note.filename('.txt').should.equal('a single note fixture test  1.txt')
+  })
   it('#title is a title string.', function() {
-    note.title.should.equal('a single note fixture')
+    note.title.should.equal('a single note fixture/test: 1')
   })
   it('#created is a Date object.', function() {
     var date = new Date(2013, 11, 2, 10, 7, 9) // 20131102T100709Z

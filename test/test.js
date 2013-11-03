@@ -16,7 +16,7 @@ describe('EvernoteExport(enml_filename)', function() {
             done()
           })
         })
-      });
+      })
     })
     it('creates exported files', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
@@ -28,7 +28,19 @@ describe('EvernoteExport(enml_filename)', function() {
             done()
           })
         })
-      });
+      })
+    })
+    it('can be called without a callback', function(done) {
+      temp.mkdir('enml2md', function(err, dirPath) {
+        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        enex.export(dirPath)
+        var testDone = function () {
+          enex.count.should.equal(1)
+          if (enex.done) done()
+          else setTimeout(testDone, 10)
+        }
+        setTimeout(testDone, 10)
+      })
     })
   })
   describe('#each(cbEach, cbEnd)', function() {
@@ -61,6 +73,23 @@ describe('EvernoteExport(enml_filename)', function() {
         done()
       }
       enex.each(cbEach, cbEnd)
+    })
+    it('can be called without cbEach()', function(done) {
+      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      var cbEnd = function () { // callback for the end
+        enex.count.should.equal(2)
+        done()
+      }
+      enex.each(null, cbEnd)
+    })
+    it('can be called without both beEach() and cbEnd()', function(done) {
+      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      var testDone = function () {
+        enex.count.should.equal(2)
+        done()
+      }
+      setTimeout(testDone, 20)
+      enex.each(null, null)
     })
   })
 })

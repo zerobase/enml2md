@@ -1,7 +1,8 @@
 var enml2md = require('../lib/enml2md.js'),
   should = require('should'),
   fs = require('fs'),
-  util = require('util')
+  util = require('util'),
+  crypto = require('crypto')
 
 var tzMin = (new Date).getTimezoneOffset() // minutes
 
@@ -14,9 +15,8 @@ describe('EvernoteExport(enml_filename)', function() {
         var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
         enex.export(dirPath, function () {
           fs.stat(dirPath, function (err, stats) {
-            if (err) throw err
             stats.isDirectory().should.be.true
-            done()
+            done(err)
           })
         })
       })
@@ -26,9 +26,8 @@ describe('EvernoteExport(enml_filename)', function() {
         var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
         enex.export(dirPath, function () {
           fs.readdir(dirPath, function (err, files) {
-            if (err) throw err
             files.length.should.equal(2)
-            done()
+            done(err)
           })
         })
       })
@@ -129,6 +128,20 @@ describe('Note', function() {
     })
     it('#content is a Markdown string.', function() {
       note.content.should.equal('fixture content\n\n')
+    })
+  })
+  describe('with image resources', function () {
+    var note_enml = fs.readFileSync('./test/fixtures/fixture_image.enex')
+    var note = enml2md.Note.parse(note_enml)
+    var hash = '095619d89dbbd6a0c5704d57e444f708'
+    var content_expected = ' The first line.\n\n'
+      + '![png image][0]\n\n'
+      + 'The end line.\n\n\n\n'
+      + '[0]: resources/' + hash + '.png'
+    it('#attachments are loaded.', function() {
+      note.content.should.equal(content_expected)
+      note.attachments.length.should.equal(1)
+      note.attachments[0].length.should.equal(10193)
     })
   })
 })

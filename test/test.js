@@ -53,17 +53,9 @@ describe('EvernoteExport(enml_filename)', function() {
         var enex = new enml2md.EvernoteExport('./test/fixtures/fixture_image.enex')
         var resourceDir = dirPath + '/resources'
         var hash = '095619d89dbbd6a0c5704d57e444f708'
-        var imageFile = resourceDir + '/' + hash + '.png'
+        var filePath = resourceDir + '/' + hash + '.png'
         enex.export(dirPath, function () {
-          var fd = fs.createReadStream(imageFile)
-          var md5 = crypto.createHash('md5')
-          md5.setEncoding('hex')
-          fd.on('end', function() {
-            md5.end()
-            md5.read().should.equal(hash)
-            done(err)
-          })
-          fd.pipe(md5)
+          assertFileMD5Hash(done, err, filePath, hash)
         })
       })
     })
@@ -180,3 +172,20 @@ describe('Note', function() {
     })
   })
 })
+
+
+// ============
+// Test Helpers
+// ============
+
+function assertFileMD5Hash(done, err, filePath, hash) {
+  var fd = fs.createReadStream(filePath)
+  var md5 = crypto.createHash('md5')
+  md5.setEncoding('hex')
+  fd.on('end', function() {
+    md5.end()
+    md5.read().should.equal(hash)
+    done(err)
+  })
+  fd.pipe(md5)
+}

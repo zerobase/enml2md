@@ -2,7 +2,8 @@ var enml2md = require('../lib/enml2md.js'),
   should = require('should'),
   fs = require('fs'),
   util = require('util'),
-  crypto = require('crypto')
+  crypto = require('crypto'),
+  mkdirp = require('mkdirp')
 
 var tzMin = (new Date).getTimezoneOffset() // minutes
 
@@ -25,10 +26,44 @@ describe('EvernoteExport(enml_filename)', function() {
       temp.mkdir('enml2md', function(err, dirPath) {
         var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
         enex.export(dirPath, function () {
-          fs.readdir(dirPath, function (err, files) {
-            files.length.should.equal(2)
+          fs.stat(dirPath + '/Enml2md test fixture note 1.md', function (err, stats) {
+            stats.isFile().should.be.true
+            fs.stat(dirPath + '/Enml2md test fixture note 2.md', function (err, stats) {
+              stats.isFile().should.be.true
+              done(err)
+            })
+          })
+        })
+      })
+    })
+    it('creates an attachment direcotry', function(done) {
+      temp.mkdir('enml2md', function(err, dirPath) {
+        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        enex.export(dirPath, function () {
+          fs.stat(dirPath + '/resources', function (err, stats) {
+            stats.isDirectory().should.be.true
             done(err)
           })
+        })
+      })
+    })
+    it('creates attachment files', function(done) {
+      temp.mkdir('enml2md', function(err, dirPath) {
+        if (err) throw err
+        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture_image.enex')
+        var resourceDir = dirPath + '/resources'
+        var hash = '095619d89dbbd6a0c5704d57e444f708'
+        var imageFile = resourceDir + '/' + hash + '.png'
+        enex.export(dirPath, function () {
+          var fd = fs.createReadStream(imageFile)
+          var md5 = crypto.createHash('md5')
+          md5.setEncoding('hex')
+          fd.on('end', function() {
+            md5.end()
+            md5.read().should.equal(hash)
+            done(err)
+          })
+          fd.pipe(md5)
         })
       })
     })

@@ -1,4 +1,4 @@
-var enml2md = require('../lib/enml2md.js'),
+var Note = require('../lib/Note').Note,
   should = require('should'),
   fs = require('fs'),
   util = require('util')
@@ -8,9 +8,9 @@ var tzMin = (new Date).getTimezoneOffset() // minutes
 describe('Note', function() {
   describe('without resources', function () {
     var note_enml = fs.readFileSync('./test/fixtures/note.enex')
-    var note = enml2md.Note.parse(note_enml)
+    var note = Note.parse(note_enml)
     it('.parse() returns a note object.', function() {
-      note.should.be.an.instanceof(enml2md.Note)
+      note.should.be.an.instanceof(Note)
     })
     it('#filename(extention) escapes title string.', function() {
       note.filename('.md').should.equal('a single note fixture test  1.md')
@@ -41,7 +41,7 @@ describe('Note', function() {
   })
   describe('with image resources', function () {
     var note_enml = fs.readFileSync('./test/fixtures/fixture_image.enex')
-    var note = enml2md.Note.parse(note_enml)
+    var note = Note.parse(note_enml)
     var hash = '095619d89dbbd6a0c5704d57e444f708'
     var content_expected = ' The first line.\n\n'
       + '![png image][0]\n\n'

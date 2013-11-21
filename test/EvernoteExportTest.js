@@ -1,4 +1,4 @@
-var enml2md = require('../lib/enml2md.js'),
+var EvernoteExport = require('../lib/EvernoteExport').EvernoteExport,
   should = require('should'),
   fs = require('fs'),
   util = require('util'),
@@ -12,7 +12,7 @@ describe('EvernoteExport(enml_filename)', function() {
   describe('#export(directory, cbDone)', function() {
     it('creates an export directory', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
-        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        var enex = new EvernoteExport('./test/fixtures/fixture1.enex')
         enex.export(dirPath, function () {
           fs.stat(dirPath, function (err, stats) {
             stats.isDirectory().should.be.true
@@ -23,7 +23,7 @@ describe('EvernoteExport(enml_filename)', function() {
     })
     it('creates exported files', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
-        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+        var enex = new EvernoteExport('./test/fixtures/fixture2.enex')
         enex.export(dirPath, function () {
           fs.stat(dirPath + '/Enml2md test fixture note 1.md', function (err, stats) {
             stats.isFile().should.be.true
@@ -37,7 +37,7 @@ describe('EvernoteExport(enml_filename)', function() {
     })
     it('creates an attachment direcotry', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
-        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        var enex = new EvernoteExport('./test/fixtures/fixture1.enex')
         enex.export(dirPath, function () {
           fs.stat(dirPath + '/resources', function (err, stats) {
             stats.isDirectory().should.be.true
@@ -49,7 +49,7 @@ describe('EvernoteExport(enml_filename)', function() {
     it('creates attachment files', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
         if (err) throw err
-        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture_image.enex')
+        var enex = new EvernoteExport('./test/fixtures/fixture_image.enex')
         var resourceDir = dirPath + '/resources'
         var hash = '095619d89dbbd6a0c5704d57e444f708'
         var filePath = resourceDir + '/' + hash + '.png'
@@ -60,7 +60,7 @@ describe('EvernoteExport(enml_filename)', function() {
     })
     it('can be called without a callback', function(done) {
       temp.mkdir('enml2md', function(err, dirPath) {
-        var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+        var enex = new EvernoteExport('./test/fixtures/fixture1.enex')
         enex.export(dirPath)
         var testDone = function () {
           enex.count.should.equal(1)
@@ -73,7 +73,7 @@ describe('EvernoteExport(enml_filename)', function() {
   })
   describe('#each(cbEach, cbEnd)', function() {
     it('sets total #count at cbEnd()', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      var enex = new EvernoteExport('./test/fixtures/fixture2.enex')
       var cbEach = function (note) { // callback for each note
         // do nothing
       }
@@ -84,7 +84,7 @@ describe('EvernoteExport(enml_filename)', function() {
       enex.each(cbEach, cbEnd)
     })
     it('calls cbEach(note)', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture1.enex')
+      var enex = new EvernoteExport('./test/fixtures/fixture1.enex')
       var expected_created = new Date(2013, 10, 2, 10, 0-tzMin, 55) // 20131102T100055Z
       var expected_updated = new Date(2013, 10, 2, 10, 3-tzMin, 49) // 20131102T100349Z
       var cbEach = function (note) { // callback for each note
@@ -103,7 +103,7 @@ describe('EvernoteExport(enml_filename)', function() {
       enex.each(cbEach, cbEnd)
     })
     it('can be called without cbEach()', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      var enex = new EvernoteExport('./test/fixtures/fixture2.enex')
       var cbEnd = function () { // callback for the end
         enex.count.should.equal(2)
         done()
@@ -111,7 +111,7 @@ describe('EvernoteExport(enml_filename)', function() {
       enex.each(null, cbEnd)
     })
     it('can be called without both beEach() and cbEnd()', function(done) {
-      var enex = new enml2md.EvernoteExport('./test/fixtures/fixture2.enex')
+      var enex = new EvernoteExport('./test/fixtures/fixture2.enex')
       var testDone = function () {
         enex.count.should.equal(2)
         done()

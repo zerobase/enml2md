@@ -27,7 +27,7 @@ class Parser
 
       'data': (text) ->
         attachment = new Attachment
-        attachment.data = new Buffer text, 'base64'
+        attachment.loadData new Buffer text, 'base64'
         saxParser.note.attachments.push attachment
 
     @saxParser.onopentag = (node) ->

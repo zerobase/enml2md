@@ -6,20 +6,26 @@ crypto = require "crypto"
 
 tzMin = (new Date).getTimezoneOffset() # minutes
 
+fixtures =
+  '1': './test/fixtures/fixture1.enex'
+  '2': './test/fixtures/fixture2.enex'
+  'note': './test/fixtures/note.enex'
+  'image': './test/fixtures/fixture_image.enex'
+
 describe "EvernoteExport(enml_filename)", () ->
   temp = require "temp"
   temp.track()
   describe "#export(directory, cbDone)", () ->
     it "creates an export directory", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport "./test/fixtures/fixture1.enex"
+        enex = new EvernoteExport fixtures['1']
         enex.export dirPath, () ->
           fs.stat dirPath, (err, stats) ->
             stats.isDirectory().should.be.true
             done err
     it "creates exported files", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport "./test/fixtures/fixture2.enex"
+        enex = new EvernoteExport fixtures['2']
         enex.export dirPath, () ->
           fs.stat dirPath + "/Enml2md test fixture note 1.md", (err, stats) ->
             stats.isFile().should.be.true
@@ -28,7 +34,7 @@ describe "EvernoteExport(enml_filename)", () ->
               done err
     it "creates an attachment direcotry", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport "./test/fixtures/fixture1.enex"
+        enex = new EvernoteExport fixtures['1']
         enex.export dirPath, () ->
           fs.stat dirPath + "/resources", (err, stats) ->
             stats.isDirectory().should.be.true
@@ -36,7 +42,7 @@ describe "EvernoteExport(enml_filename)", () ->
     it "creates attachment files", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
         throw err if err
-        enex = new EvernoteExport "./test/fixtures/fixture_image.enex"
+        enex = new EvernoteExport fixtures['image']
         resourceDir = dirPath + "/resources"
         hash = "095619d89dbbd6a0c5704d57e444f708"
         filePath = resourceDir + "/" + hash + ".png"
@@ -44,7 +50,7 @@ describe "EvernoteExport(enml_filename)", () ->
           assertFileMD5Hash(done, err, filePath, hash)
     it "can be called without a callback", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport "./test/fixtures/fixture1.enex"
+        enex = new EvernoteExport fixtures['1']
         enex.export dirPath
         testDone = () ->
           enex.count.should.equal 1
@@ -56,7 +62,7 @@ describe "EvernoteExport(enml_filename)", () ->
   
   describe "#each(cbEach, cbEnd)", () ->
     it "sets total #count at cbEnd()", (done) ->
-      enex = new EvernoteExport "./test/fixtures/fixture2.enex"
+      enex = new EvernoteExport fixtures['2']
       cbEach = (note) -> # callback for each note
         # do nothing
       cbEnd = () -> # callback for the end
@@ -64,7 +70,7 @@ describe "EvernoteExport(enml_filename)", () ->
         done()
       enex.each cbEach, cbEnd
     it "calls cbEach(note)", (done) ->
-      enex = new EvernoteExport "./test/fixtures/fixture1.enex"
+      enex = new EvernoteExport fixtures['1']
       expected_created = new Date 2013, 10, 2, 10, 0-tzMin, 55 # 20131102T100055Z
       expected_updated = new Date 2013, 10, 2, 10, 3-tzMin, 49 # 20131102T100349Z
       cbEach = (note) -> # callback for each note
@@ -80,13 +86,13 @@ describe "EvernoteExport(enml_filename)", () ->
         done()
       enex.each cbEach, cbEnd
     it "can be called without cbEach()", (done) ->
-      enex = new EvernoteExport "./test/fixtures/fixture2.enex"
+      enex = new EvernoteExport fixtures['2']
       cbEnd = () -> # callback for the end
         enex.count.should.equal 2
         done()
       enex.each null, cbEnd
     it "can be called without both beEach() and cbEnd()", (done) ->
-      enex = new EvernoteExport "./test/fixtures/fixture2.enex"
+      enex = new EvernoteExport fixtures['2']
       testDone = () ->
         enex.count.should.equal 2 
         done()
@@ -108,15 +114,13 @@ assertFileMD5Hash = (done, err, filePath, hash) ->
     done err
   fd.pipe md5
 
-tzMin = (new Date).getTimezoneOffset() # minutes
-
 describe "EvernoteExport(enml_filename)", () ->
   temp = require "temp"
   temp.track()
   describe "#export(directory, cbDone)", () ->
     it "creates an export directory", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport "./test/fixtures/fixture1.enex"
+        enex = new EvernoteExport fixtures['1']
         enex.export dirPath, () ->
           fs.stat dirPath, (err, stats) ->
             stats.isDirectory().should.be.true

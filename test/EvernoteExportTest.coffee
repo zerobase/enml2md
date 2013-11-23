@@ -64,8 +64,8 @@ describe "EvernoteExport(enml_filename)", () ->
       enex.each cbEach, cbEnd
     it "calls cbEach(note)", (done) ->
       enex = new EvernoteExport TestConfig.fixtures['1']
-      expected_created = new Date 2013, 10, 2, 10, 0-TestConfig.tzMin, 55 # 20131102T100055Z
-      expected_updated = new Date 2013, 10, 2, 10, 3-TestConfig.tzMin, 49 # 20131102T100349Z
+      expected_created = new Date 2013, 10, 2, 10, 0-TestConfig.TZOffsetMinutes, 55 # 20131102T100055Z
+      expected_updated = new Date 2013, 10, 2, 10, 3-TestConfig.TZOffsetMinutes, 49 # 20131102T100349Z
       cbEach = (note) -> # callback for each note
         note.title.should.equal "Enml2md test fixture note"
         note.created.should.eql expected_created

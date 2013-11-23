@@ -4,4 +4,5 @@ exports.fixtures =
   'note': './test/fixtures/note.enex'
   'image': './test/fixtures/fixture_image.enex'
 
-exports.tzMin = (new Date).getTimezoneOffset() # minutes
+# TZOffsetMinutes: Time zone offsets in minutes, to make tests free from time zone dependency, especially for Travis-CI.
+exports.TZOffsetMinutes = (new Date).getTimezoneOffset()

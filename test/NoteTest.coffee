@@ -44,7 +44,7 @@ describe 'Note', ->
       it 'is a Markdown string.', ->
         note.content.should.equal 'fixture content\n\n'
 
-  describe 'with an image attachment', () ->
+  describe 'with an image attachment', ->
     note_enml = fs.readFileSync TestConfig.fixtures['image']
     note = Note.parse note_enml
     hash = '095619d89dbbd6a0c5704d57e444f708'
@@ -53,7 +53,20 @@ describe 'Note', ->
       'The end line.\n\n\n\n' +
       '[0]: resources/' + hash + '.png'
     describe '@attachments', ->
-      it 'are loaded.', () ->
+      it 'are loaded.', ->
         note.content.should.equal content_expected
         note.attachmentsLength.should.equal 1
         note.attachments[hash].data.length.should.equal 7551
+
+  describe 'with two attachments', ->
+    note_enml = fs.readFileSync TestConfig.fixtures['3']
+    note = Note.parse note_enml
+    content_expected = ' [attachment: b1946ac92492d2347c6235b4d2611184 (text/plain)][0]  \n' +
+      '[attachment: 591785b794601e212b260e25925636fd (text/plain)][1] \n\n' +
+      '[0]: resources/b1946ac92492d2347c6235b4d2611184\n' +
+      '[1]: resources/591785b794601e212b260e25925636fd'
+      # TODO: append original file extention
+    describe '@attachments', ->
+      it 'are loaded.', ->
+        note.content.should.equal content_expected
+        note.attachmentsLength.should.equal 2

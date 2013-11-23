@@ -4,7 +4,7 @@ class Attachment
   constructor: () ->
     @data = null # data string (base64)
     @hash = null # MD5 hash string
-    @fileName = "image.png" # file basename string
+    @fileName = null # file basename string
     @extention = "png" # file extention string
 
   loadData: (data) ->

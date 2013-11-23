@@ -45,7 +45,7 @@ class Note
       .replace(/<en-note[^>]*>\s*/g, '')
       .replace(/<\/en-note>\s*/g, '')
       .replace(/]](--)?>\s*/g, '')
-      .replace(/<en-media type="image\/(png|jpg|gif)" hash="(\w+)"\/>/g, '<img alt="$1 image" src="resources/$2.$1"/>')
+      .replace(/<en-media type="image\/([^"]+)" hash="(\w+)"\/>/g, '<img alt="$1 image" src="resources/$2.$1"/>')
       .replace(/<en-media type="([^"]+)" hash="(\w+)"\/>/g, '<a href="resources/$2">atattchment: $2 ($1)</a>')
     # TODO: apropriate treatment of <en-media>
     @content = html2markdown note_content

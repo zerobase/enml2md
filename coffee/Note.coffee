@@ -62,11 +62,12 @@ Note.withCheerio = ($) -> # Cheerio object
   note.updated = Note.parseENMLDate $('updated').text()
   $('tag').each (index) ->
     note.tags[index] = $(this).text()
-  note.loadENMLContent $('content').html()
-  $('data').each (index) ->
+  $('resource').each (index) ->
     attachment = new Attachment
-    attachment.loadData new Buffer $(this).text(), 'base64'
+    attachment.loadData new Buffer $(this).find('data').text(), 'base64'
     note.pushAttachment attachment
+    attachment.setFileName $(this).find('file-name').text()
+  note.loadENMLContent $('content').html()
   note
 
 Note.parseENMLDate = (string) -> # return a Date object.

@@ -52,9 +52,11 @@ describe 'Note', ->
       '![png image][0]\n\n' +
       'The end line.\n\n\n\n' +
       '[0]: resources/' + hash + '.png'
+    describe '@content', ->
+      it 'is ok.', ->
+        note.content.should.equal content_expected
     describe '@attachments', ->
       it 'are loaded.', ->
-        note.content.should.equal content_expected
         note.attachmentsLength.should.equal 1
         note.attachments[hash].data.length.should.equal 7551
 
@@ -66,7 +68,11 @@ describe 'Note', ->
       '[0]: resources/b1946ac92492d2347c6235b4d2611184\n' +
       '[1]: resources/591785b794601e212b260e25925636fd'
       # TODO: append original file extention
+    describe '@content', ->
+      it 'is ok.', ->
+        note.content.should.equal content_expected
     describe '@attachments', ->
       it 'are loaded.', ->
-        note.content.should.equal content_expected
         note.attachmentsLength.should.equal 2
+        note.attachments['b1946ac92492d2347c6235b4d2611184'].fileName.should.equal 'hello.txt'
+        note.attachments['591785b794601e212b260e25925636fd'].fileName.should.equal 'world.txt'

@@ -8,7 +8,7 @@ describe 'Note', ->
   describe 'without resources', ->
     note_enml = fs.readFileSync TestConfig.fixtures['note']
     note = Note.parse note_enml
-    describe '.parser()', ->
+    describe '.parse()', ->
       it 'returns a note object.', ->
         note.should.be.an.instanceof(Note)
     
@@ -17,34 +17,34 @@ describe 'Note', ->
         note.filename('.md').should.equal 'a single note fixture test  1.md'
         note.filename('.txt').should.equal 'a single note fixture test  1.txt'
     
-    describe '#title', ->
+    describe '@title', ->
       it 'is a title string.', ->
         note.title.should.equal 'a single note fixture/test: 1'
     
-    describe '#created', ->
-      it '#created is a Date object.', ->
+    describe '@created', ->
+      it 'is a Date object.', ->
         date = new Date 2013, 10, 2, 10, 7-TestConfig.TZOffsetMinutes, 9 # 20131102T100709Z
         note.created.should.be.an.instanceof Date
         note.created.should.eql date
     
-    describe '#updated', ->
-      it '#updated is a Date object.', ->
+    describe '@updated', ->
+      it 'is a Date object.', ->
         date = new Date 2013, 10, 2, 10, 7-TestConfig.TZOffsetMinutes, 13  # 20131102T100713Z
         note.updated.should.be.an.instanceof Date
         note.updated.should.eql date
     
-    describe '#tags', ->
+    describe '@tags', ->
       it 'is an array of string.', ->
         note.tags.should.be.an.instanceof Array
         note.tags.length.should.equal 2
         note.tags[0].should.equal 'markdown'
         note.tags[1].should.equal 'evernote'
     
-    describe '#content', ->
+    describe '@content', ->
       it 'is a Markdown string.', ->
         note.content.should.equal 'fixture content\n\n'
 
-  describe 'with image resources', () ->
+  describe 'with an image attachment', () ->
     note_enml = fs.readFileSync TestConfig.fixtures['image']
     note = Note.parse note_enml
     hash = '095619d89dbbd6a0c5704d57e444f708'

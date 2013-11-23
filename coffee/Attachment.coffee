@@ -5,7 +5,7 @@ class Attachment
     @data = null # data string (base64)
     @hash = null # MD5 hash string
     @fileName = null # file basename string
-    @extention = "png" # file extention string
+    @extention = null # file extention string
 
   loadData: (data) ->
     @data = data

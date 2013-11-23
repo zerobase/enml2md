@@ -29,6 +29,10 @@ class Parser
         attachment = new Attachment
         attachment.loadData new Buffer text, 'base64'
         saxParser.note.pushAttachment attachment
+        saxParser.currentAttachment = attachment
+
+      'file-name': (fileName) ->
+        saxParser.currentAttachment.setFileName fileName
 
     @saxParser.onopentag = (node) ->
       this.currentElement = node.name

@@ -1,5 +1,5 @@
 TestConfig = require("./TestConfig")
-EvernoteExport = require("../lib/EvernoteExport").EvernoteExport
+EvernoteExport = require("../coffee/EvernoteExport").EvernoteExport
 should = require "should"
 fs = require "fs"
 util = require "util"

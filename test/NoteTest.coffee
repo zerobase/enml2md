@@ -1,5 +1,5 @@
 TestConfig = require("./TestConfig")
-Note = require('../lib/Note').Note
+Note = require('../coffee/Note').Note
 should = require 'should'
 fs = require 'fs'
 util = require 'util'

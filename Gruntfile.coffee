@@ -37,10 +37,10 @@ module.exports = (grunt) ->
         files: 'coffee/**/*.coffee',
         tasks: ['coffee']
       test:
-        files: ['test/**/*.coffee'],
+        files: ['**/*.coffee'],
         tasks: ['simplemocha']
 
   grunt.registerTask 'build', ['clean', 'coffee']
-  grunt.registerTask 'dev', ['build', 'watch']
-  grunt.registerTask 'test', ['build', 'simplemocha']
+  grunt.registerTask 'dev', ['test', 'watch']
+  grunt.registerTask 'test', ['simplemocha']
   grunt.registerTask 'default', ['build']

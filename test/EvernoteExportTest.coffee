@@ -106,15 +106,3 @@ assertFileMD5Hash = (done, err, filePath, hash) ->
     md5.read().should.equal hash
     done err
   fd.pipe md5
-
-describe "EvernoteExport(enml_filename)", () ->
-  temp = require "temp"
-  temp.track()
-  describe "#export(directory, cbDone)", () ->
-    it "creates an export directory", (done) ->
-      temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport TestConfig.fixtures['1']
-        enex.export dirPath, () ->
-          fs.stat dirPath, (err, stats) ->
-            stats.isDirectory().should.be.true
-            done err

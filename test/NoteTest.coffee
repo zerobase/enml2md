@@ -47,5 +47,5 @@ describe 'Note', () ->
       '[0]: resources/' + hash + '.png'
     it '#attachments are loaded.', () ->
       note.content.should.equal content_expected
-      note.attachments.length.should.equal 1
-      note.attachments[0].data.length.should.equal 7551
+      note.attachmentsLength.should.equal 1
+      note.attachments[hash].data.length.should.equal 7551

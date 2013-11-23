@@ -10,7 +10,8 @@ class Note
     this.updated = null # Date
     this.tags = [] # Array of String
     this.content = null # String
-    this.attachments = [] # Array of String(file data)
+    this.attachments = {} # { 'MD5 hash' => Attachment object }
+    this.attachmentsLength = 0
   
   filename: (extention) ->
     filename = this.title.replace /[\/:]/g, ' '
@@ -29,6 +30,10 @@ class Note
     markdown += '\n'+ this.content
     markdown
 
+  pushAttachment: (attachment) ->
+    @attachments[attachment.hash] = attachment
+    @attachmentsLength += 1
+
 Note.parse = (enml_note) -> # returns a Note object.
   $ = cheerio.load enml_note
   note = Note.withCheerio $
@@ -45,7 +50,7 @@ Note.withCheerio = ($) -> # Cheerio object
   $('data').each (index) ->
     attachment = new Attachment
     attachment.loadData new Buffer $(this).text(), 'base64'
-    note.attachments[index] = attachment
+    note.pushAttachment attachment
   note
 
 Note.parseENMLDate = (string) -> # return a Date object.

@@ -29,7 +29,7 @@ class EvernoteExport
 
   _exportAttachments: (exportDirectory, note) ->
     enex = this
-    note.attachments.forEach (attachment) ->
+    for hash, attachment of note.attachments
       path = enex._exportAttachmentPath exportDirectory, attachment
       fs.writeFile path, attachment.data, (err) ->
         throw err if err

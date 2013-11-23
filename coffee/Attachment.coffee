@@ -33,4 +33,7 @@ class Attachment
       throw "File extention should be set before."
     @extention
 
+  toString: () ->
+    "fileName: #{@fileName}, @hash: #{@hash}, @extention: #{@extention}, @data.length: #{@data.length}"
+
 exports.Attachment = Attachment

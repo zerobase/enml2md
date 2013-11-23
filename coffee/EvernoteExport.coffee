@@ -44,7 +44,6 @@ class EvernoteExport
 
   each: (cbEach, cbEnd) ->
     parser = new Parser this, cbEach, cbEnd
-    fs.readFile this.filename, 'utf8', (error, file) ->
-      parser.write( file.toString() ).close()
+    parser.parse this.filename
 
 exports.EvernoteExport = EvernoteExport

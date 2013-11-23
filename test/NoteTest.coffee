@@ -19,12 +19,12 @@ describe 'Note', () ->
       note.title.should.equal 'a single note fixture/test: 1'
     
     it '#created is a Date object.', () ->
-      date = new Date 2013, 10, 2, 19, 7, 9 # 20131102T100709Z
+      date = new Date 2013, 10, 2, 10, 7-TestConfig.tzMin, 9 # 20131102T100709Z
       note.created.should.be.an.instanceof Date
       note.created.should.eql date
     
     it '#updated is a Date object.', () ->
-      date = new Date 2013, 10, 2, 19, 7, 13  # 20131102T100713Z
+      date = new Date 2013, 10, 2, 10, 7-TestConfig.tzMin, 13  # 20131102T100713Z
       note.updated.should.be.an.instanceof Date
       note.updated.should.eql date
     

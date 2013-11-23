@@ -38,7 +38,7 @@ class EvernoteExport
     exportDirectory + '/resources'
   
   _exportAttachmentPath: (exportDirectory, attachment) ->
-    this._resourceDirectory(exportDirectory) + '/' + attachment.hash + '.' + attachment.extention
+    this._resourceDirectory(exportDirectory) + '/' + attachment.exportFileName()
 
   each: (cbEach, cbEnd) ->
     parser = new Parser this, cbEach, cbEnd

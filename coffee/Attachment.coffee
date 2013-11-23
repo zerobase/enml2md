@@ -19,5 +19,18 @@ class Attachment
     @fileName = fileName
     split = fileName.split(".")
     @extention = split[split.length - 1]
+  
+  exportFileName: () ->
+    @getHash() + '.' + @getExtention()
+
+  getHash: () ->
+    unless @hash
+      throw "Data should be loaded before."
+    @hash
+
+  getExtention: () ->
+    unless @extention
+      throw "File extention should be set before."
+    @extention
 
 exports.Attachment = Attachment

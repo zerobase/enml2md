@@ -1,16 +1,12 @@
+TestConfig = require("./TestConfig")
 Note = require('../lib/Note').Note
 should = require 'should'
 fs = require 'fs'
 util = require 'util'
 
-tzMin = (new Date).getTimezoneOffset() # minutes
-fixtures =
-  'note': './test/fixtures/note.enex'
-  'image': './test/fixtures/fixture_image.enex'
-
 describe 'Note', () ->
   describe 'without resources', () ->
-    note_enml = fs.readFileSync fixtures['note']
+    note_enml = fs.readFileSync TestConfig.fixtures['note']
     note = Note.parse note_enml
     it '.parse() returns a note object.', () ->
       note.should.be.an.instanceof(Note)
@@ -23,12 +19,12 @@ describe 'Note', () ->
       note.title.should.equal 'a single note fixture/test: 1'
     
     it '#created is a Date object.', () ->
-      date = new Date 2013, 10, 2, 10, 7-tzMin, 9 # 20131102T100709Z
+      date = new Date 2013, 10, 2, 10, 7-TestConfig.tzMin, 9 # 20131102T100709Z
       note.created.should.be.an.instanceof Date
       note.created.should.eql date
     
     it '#updated is a Date object.', () ->
-      date = new Date 2013, 10, 2, 10, 7-tzMin, 13  # 20131102T100713Z
+      date = new Date 2013, 10, 2, 10, 7-TestConfig.tzMin, 13  # 20131102T100713Z
       note.updated.should.be.an.instanceof Date
       note.updated.should.eql date
     
@@ -42,7 +38,7 @@ describe 'Note', () ->
       note.content.should.equal 'fixture content\n\n'
 
   describe 'with image resources', () ->
-    note_enml = fs.readFileSync fixtures['image']
+    note_enml = fs.readFileSync TestConfig.fixtures['image']
     note = Note.parse note_enml
     hash = '095619d89dbbd6a0c5704d57e444f708'
     content_expected = ' The first line.\n\n' +

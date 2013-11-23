@@ -50,7 +50,7 @@ describe('Note', function() {
     it('#attachments are loaded.', function() {
       note.content.should.equal(content_expected)
       note.attachments.length.should.equal(1)
-      note.attachments[0].length.should.equal(10193)
+      note.attachments[0].data.length.should.equal(10193)
     })
   })
 })

@@ -30,9 +30,8 @@ class EvernoteExport
   _exportAttachments: (exportDirectory, note) ->
     enex = this
     note.attachments.forEach (attachment) ->
-      buffer = new Buffer attachment.data, 'base64'
       path = enex._exportAttachmentPath exportDirectory, attachment
-      fs.writeFile path, buffer, (err) ->
+      fs.writeFile path, attachment.data, (err) ->
         throw err if err
 
   _resourceDirectory: (exportDirectory) ->

@@ -44,7 +44,7 @@ Note.withCheerio = ($) -> # Cheerio object
   note.content = Note.parseENMLContent $('content').html()
   $('data').each (index) ->
     attachment = new Attachment
-    attachment.data = $(this).text() # base64 string
+    attachment.data = new Buffer $(this).text(), 'base64'
     note.attachments[index] = attachment
   note
 

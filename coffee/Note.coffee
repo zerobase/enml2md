@@ -10,9 +10,10 @@ class Note
     this.updated = null # Date
     this.tags = [] # Array of String
     this.content = null # String
+    this.original_content = null # String
     this.attachments = {} # { 'MD5 hash' => Attachment object }
     this.attachmentsLength = 0
-  
+
   filename: (extention) ->
     filename = this.title.replace /[\/:]/g, ' '
     extention = extention || '.md'
@@ -34,6 +35,22 @@ class Note
     @attachments[attachment.hash] = attachment
     @attachmentsLength += 1
 
+  loadENMLContent: (note_content) ->
+    # load a content string and convert it to Markdown string
+    @original_content = note_content
+    note_content = note_content
+      .replace(/<\?xml[^>]*>\s*/g, '')
+      .replace(/<!(--)?\[CDATA[^>]*>\s*/g, '')
+      .replace(/<!DOCTYPE[^>]*>\s*/g, '')
+      .replace(/<en-note[^>]*>\s*/g, '')
+      .replace(/<\/en-note>\s*/g, '')
+      .replace(/]](--)?>\s*/g, '')
+      .replace(/<en-media type="image\/(png|jpg|gif)" hash="(\w+)"\/>/g, '<img alt="$1 image" src="resources/$2.$1"/>')
+      .replace(/<en-media type="([^"]+)" hash="(\w+)"\/>/g, '<a href="resources/$2">atattchment: $2 ($1)</a>')
+    # TODO: apropriate treatment of <en-media>
+    @content = html2markdown note_content
+
+
 Note.parse = (enml_note) -> # returns a Note object.
   $ = cheerio.load enml_note
   note = Note.withCheerio $
@@ -46,7 +63,7 @@ Note.withCheerio = ($) -> # Cheerio object
   note.updated = Note.parseENMLDate $('updated').text()
   $('tag').each (index) ->
     note.tags[index] = $(this).text()
-  note.content = Note.parseENMLContent $('content').html()
+  note.loadENMLContent $('content').html()
   $('data').each (index) ->
     attachment = new Attachment
     attachment.loadData new Buffer $(this).text(), 'base64'
@@ -66,18 +83,5 @@ Note.parseENMLDate = (string) -> # return a Date object.
   # YYYYMMDDTHHMMSSZ
   # 012345678901234
   # string.substr(from [, length])
-
-Note.parseENMLContent = (note_content) -> # return a string (Markdown format).
-  note_content = note_content
-    .replace(/<\?xml[^>]*>\s*/g, '')
-    .replace(/<!(--)?\[CDATA[^>]*>\s*/g, '')
-    .replace(/<!DOCTYPE[^>]*>\s*/g, '')
-    .replace(/<en-note[^>]*>\s*/g, '')
-    .replace(/<\/en-note>\s*/g, '')
-    .replace(/]](--)?>\s*/g, '')
-    .replace(/<en-media type="image\/(png|jpg|gif)" hash="(\w+)"\/>/g, '<img alt="$1 image" src="resources/$2.$1"/>')
-    .replace(/<en-media type="([^"]+)" hash="(\w+)"\/>/g, '<a href="resources/$2">atattchment: $2 ($1)</a>')
-  # TODO: apropriate treatment of <en-media>
-  html2markdown note_content
 
 exports.Note = Note

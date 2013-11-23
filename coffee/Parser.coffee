@@ -49,8 +49,7 @@ class Parser
       this.cdata = text
 
     @saxParser.onclosecdata = () ->
-      this.note.content = Note.parseENMLContent(this.cdata)
-      # TODO: parse inside CDATA to obtain attachments
+      this.note.loadENMLContent this.cdata
 
     @saxParser.onend = () ->
       cbEnd() if cbEnd

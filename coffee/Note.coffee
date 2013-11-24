@@ -48,8 +48,12 @@ class Note
       .replace(/<en-note[^>]*>\s*/g, '')
       .replace(/<\/en-note>\s*/g, '')
       .replace(/]](--)?>\s*/g, '')
-      .replace(/<en-media type="image\/([^"]+)" hash="(\w+)"\/>/g, '<img alt="$1 image" src="resources/$2.$1"/>')
-      .replace(/<en-media type="(\w+)\/([^"]+)" .*hash="(\w+)"\/>/g, (match, p1, p2, hash) -> "<a href=\"resources/#{hash}/#{f=note.attachments[hash].fileName}\">#{f}</a>")
+      .replace(/<en-media type="(\w+)\/([^"]+)"[^>]*?hash="(\w+)"[^>]*?\/>/g,
+        (match, type, subtype, hash) ->
+          if type == 'image'
+            "<img alt=\"#{subtype} image\" src=\"resources/#{hash}.#{subtype}\"/>"
+          else
+            "<a href=\"resources/#{hash}/#{f=note.attachments[hash].fileName}\">#{f}</a>")
     @content = html2markdown note_content
 
 

@@ -16,4 +16,4 @@ describe 'Attachment', () ->
       pngImage = fs.readFileSync TestConfig.fixtures['pngImage']
       attachment.setFileName 'a.b.c.jpg'
       attachment.loadData pngImage
-      attachment.exportFileName().should.equal '095619d89dbbd6a0c5704d57e444f708.jpg'
+      attachment.exportFileName().should.equal '095619d89dbbd6a0c5704d57e444f708/a.b.c.jpg'

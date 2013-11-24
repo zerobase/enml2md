@@ -21,7 +21,7 @@ class Attachment
     @extention = split[split.length - 1]
   
   exportFileName: () ->
-    @getHash() + '.' + @getExtention()
+    @getHash() + '/' + @fileName
 
   getHash: () ->
     unless @hash

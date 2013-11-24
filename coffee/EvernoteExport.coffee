@@ -24,22 +24,19 @@ class EvernoteExport
 
   _exportNote: (exportDirectory, note) ->
     path = exportDirectory + '/' + note.filename()
-    fs.writeFile path, note.toString(), (err) ->
-      throw err if err
+    fs.writeFileSync path, note.toString()
 
   _exportAttachments: (exportDirectory, note) ->
-    enex = this
     for hash, attachment of note.attachments
-      path = enex._exportAttachmentPath exportDirectory, attachment
-      fs.writeFile path, attachment.data, (err) ->
-        throw err if err
+      resourceDirectory = this._resourceDirectory exportDirectory
+      attachmentDirectory = resourceDirectory + '/' + hash
+      file = attachmentDirectory + '/' + attachment.fileName
+      fs.mkdirSync attachmentDirectory
+      fs.writeFileSync file, attachment.data
 
   _resourceDirectory: (exportDirectory) ->
     exportDirectory + '/resources'
   
-  _exportAttachmentPath: (exportDirectory, attachment) ->
-    this._resourceDirectory(exportDirectory) + '/' + attachment.exportFileName()
-
   each: (cbEach, cbEnd) ->
     parser = new Parser this, cbEach, cbEnd
     parser.parse this.filename

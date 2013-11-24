@@ -4,10 +4,11 @@ should = require "should"
 fs = require "fs"
 util = require "util"
 crypto = require "crypto"
+mkdirp = require 'mkdirp'
+temp = require "temp"
+temp.track()
 
 describe "EvernoteExport(enml_filename)", ->
-  temp = require "temp"
-  temp.track()
   describe "#export(directory, cbDone)", ->
     it "creates an export directory", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
@@ -37,10 +38,17 @@ describe "EvernoteExport(enml_filename)", ->
         throw err if err
         enex = new EvernoteExport TestConfig.fixtures['image']
         resourceDir = dirPath + "/resources"
-        hash = "095619d89dbbd6a0c5704d57e444f708"
-        filePath = resourceDir + "/" + hash + ".png"
+        filePath = resourceDir + "/095619d89dbbd6a0c5704d57e444f708/image.png"
         enex.export dirPath, ->
-          assertFileMD5Hash(done, err, filePath, hash)
+          fs.statSync(filePath).isFile().should.be.true
+          fd = fs.createReadStream filePath
+          md5 = crypto.createHash "md5"
+          md5.setEncoding "hex"
+          fd.on "end", ->
+            md5.end()
+            md5.read().should.equal "095619d89dbbd6a0c5704d57e444f708"
+            done err
+          fd.pipe md5
     it "can be called without a callback", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
         enex = new EvernoteExport TestConfig.fixtures['1']
@@ -91,18 +99,3 @@ describe "EvernoteExport(enml_filename)", ->
         done()
       setTimeout testDone, 20
       enex.each null, null
-
-
-# ============
-# Test Helpers
-# ============
-
-assertFileMD5Hash = (done, err, filePath, hash) ->
-  fd = fs.createReadStream filePath
-  md5 = crypto.createHash "md5"
-  md5.setEncoding "hex"
-  fd.on "end", ->
-    md5.end()
-    md5.read().should.equal hash
-    done err
-  fd.pipe md5

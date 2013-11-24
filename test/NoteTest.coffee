@@ -63,11 +63,10 @@ describe 'Note', ->
   describe 'with two attachments', ->
     note_enml = fs.readFileSync TestConfig.fixtures['3']
     note = Note.parse note_enml
-    content_expected = ' [attachment: b1946ac92492d2347c6235b4d2611184 (text/plain)][0]  \n' +
-      '[attachment: 591785b794601e212b260e25925636fd (text/plain)][1] \n\n' +
-      '[0]: resources/b1946ac92492d2347c6235b4d2611184\n' +
-      '[1]: resources/591785b794601e212b260e25925636fd'
-      # TODO: append original file extention
+    content_expected = ' [hello.txt][0]  \n' +
+      '[world.txt][1] \n\n' +
+      '[0]: resources/b1946ac92492d2347c6235b4d2611184/hello.txt\n' +
+      '[1]: resources/591785b794601e212b260e25925636fd/world.txt'
     describe '@content', ->
       it 'is ok.', ->
         note.content.should.equal content_expected

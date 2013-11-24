@@ -1,3 +1,7 @@
+coffeeDirectory = 'coffee'
+coffeeOutputDirectory = 'lib'
+testDirectory = 'test'
+
 module.exports = (grunt) ->
   pkg = grunt.file.readJSON 'package.json'
   for t of pkg.devDependencies
@@ -12,14 +16,14 @@ module.exports = (grunt) ->
           {
             expand: true
             ext: '.js'
-            cwd: 'coffee'
+            cwd: coffeeDirectory
             src: ['**/*.coffee']
-            dest: 'lib'
+            dest: coffeeOutputDirectory
           }
         ]
 
     clean:
-      lib: 'lib'
+      lib: coffeeOutputDirectory
 
     simplemocha:
       options:
@@ -30,11 +34,11 @@ module.exports = (grunt) ->
         reporter: 'spec'
         compilers: 'coffee:coffee-script'
       all:
-        src: 'test/**/*.coffee'
+        src: "#{testDirectory}/**/*.coffee"
 
     watch:
       coffee:
-        files: 'coffee/**/*.coffee',
+        files: "#{coffeeDirectory}/**/*.coffee",
         tasks: ['coffee']
       test:
         files: ['**/*.coffee'],

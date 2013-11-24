@@ -32,6 +32,8 @@ class Note
     markdown
 
   pushAttachment: (attachment) ->
+    unless attachment.hash
+      throw "hash is not set for attachment"
     @attachments[attachment.hash] = attachment
     @attachmentsLength += 1
 

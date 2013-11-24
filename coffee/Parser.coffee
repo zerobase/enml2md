@@ -26,18 +26,21 @@ class Parser
         saxParser.note.tags.push text
 
       'data': (text) ->
-        attachment = new Attachment
-        attachment.loadData new Buffer text, 'base64'
+        data = new Buffer text, 'base64'
+        attachment = saxParser.currentAttachment
+        attachment.loadData data
         saxParser.note.pushAttachment attachment
-        saxParser.currentAttachment = attachment
 
       'file-name': (fileName) ->
         saxParser.currentAttachment.setFileName fileName
 
     @saxParser.onopentag = (node) ->
       this.currentElement = node.name
-      if node.name == 'note'
-        this.note = new Note
+      switch node.name
+        when 'note'
+          this.note = new Note
+        when 'resource'
+          this.currentAttachment = new Attachment
 
     @saxParser.onclosetag = (nodeName) ->
       if nodeName == 'note'

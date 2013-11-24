@@ -9,11 +9,14 @@ class Attachment
 
   loadData: (data) ->
     @data = data
+    @hash = this._hash(data)
+  
+  _hash: (data) ->
     md5 = crypto.createHash "md5"
     md5.setEncoding "hex"
     md5.write @data
     md5.end()
-    @hash = md5.read()
+    hash = md5.read()
 
   setFileName: (fileName) ->
     @fileName = fileName

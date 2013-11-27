@@ -1,3 +1,7 @@
 node_modules
-private
+lib/**/*.js
+lib/**/*.js.map
+test/**/*.js
+test/**/*.js.map
 test/tmp
+private

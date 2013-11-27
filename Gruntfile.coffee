@@ -16,7 +16,7 @@ module.exports = (grunt) ->
             ext: '.js'
             src: ['**/*.coffee']
             cwd: 'lib'
-            dest: 'lib'
+            dest: 'js/lib'
           }
         ],
       test:
@@ -26,13 +26,12 @@ module.exports = (grunt) ->
             ext: '.js'
             src: ['**/*.coffee']
             cwd: 'test'
-            dest: 'test'
+            dest: 'js/test'
           }
         ],
 
     clean:
-      lib: ["lib/**/*.{js,js.map,map}"]
-      test: ["test/**/*.{js,js.map,map}"]
+      js: ["js/**"]
 
     simplemocha:
       options:
@@ -41,16 +40,15 @@ module.exports = (grunt) ->
         ignoreLeaks: false
         ui: 'bdd'
         reporter: 'spec'
-        compilers: 'coffee:coffee-script'
       all:
-        src: "test/**/*.js"
+        src: "js/test/**/*.js"
 
     watch:
       coffee:
         files: "lib/**/*.coffee",
         tasks: ['coffee']
       test:
-        files: ['**/*.coffee'],
+        files: ['lib/**/*.coffee', 'test/**/*.coffee'],
         tasks: ['simplemocha']
 
   grunt.registerTask 'build', ['clean', 'coffee']

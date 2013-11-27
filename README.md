@@ -10,9 +10,9 @@ No cli available yet. This is only a library.
 Install
 -------
 
-$ git clone git@github.com:zerobase/enml2md.git
-$ npm install
-$ npm test
+	$ git clone git@github.com:zerobase/enml2md.git
+	$ npm install
+	$ npm test
 
 Requirements
 ------------

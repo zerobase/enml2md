@@ -51,7 +51,7 @@ describe 'Note', ->
     content_expected = ' The first line.\n\n' +
       '![png image][0]\n\n' +
       'The end line.\n\n\n\n' +
-      '[0]: resources/' + hash + '/image.png'
+      '[0]: resources/' + hash + '/foo.png'
     describe '@content', ->
       it 'is ok.', ->
         note.content.should.equal content_expected

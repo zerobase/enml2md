@@ -50,13 +50,10 @@ class Note
       .replace(/]](--)?>\s*/g, '')
       .replace(/<en-media[^>]*?type="(\w+)\/([^"]+)"[^>]*?hash="(\w+)"[^>]*?\/>/g,
         (match, type, subtype, hash) ->
+          f = note.attachments[hash].fileName
           if type == 'image'
-            # f = note.attachments[hash].fileName
-            # TODO: fook Attachment#loadData() and set self hash for Note@attachments
-            "<img alt=\"#{subtype} image\" src=\"resources/#{hash}/image.#{subtype}\"/>"
-            #                             TODO: original file name ^^^^^
+            "<img alt=\"#{subtype} image\" src=\"resources/#{hash}/#{f}\"/>"
           else
-            f = note.attachments[hash].fileName
             "<a href=\"resources/#{hash}/#{f}\">#{f}</a>")
     @content = html2markdown note_content
 

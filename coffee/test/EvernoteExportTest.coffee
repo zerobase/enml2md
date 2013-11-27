@@ -38,7 +38,7 @@ describe "EvernoteExport(enml_filename)", ->
         throw err if err
         enex = new EvernoteExport TestConfig.fixtures['image']
         resourceDir = dirPath + "/resources"
-        filePath = resourceDir + "/095619d89dbbd6a0c5704d57e444f708/image.png"
+        filePath = resourceDir + "/095619d89dbbd6a0c5704d57e444f708/foo.png"
         enex.export dirPath, ->
           fs.statSync(filePath).isFile().should.be.true
           fd = fs.createReadStream filePath

@@ -26,6 +26,7 @@ class EvernoteExport
   _exportNote: (exportDirectory, note) ->
     notePath = exportDirectory + '/' + note.filename()
     fs.writeFileSync notePath, note.toString()
+    fs.utimesSync notePath, note.updated, note.created
 
   _exportAttachments: (exportDirectory, note) ->
     for hash, attachment of note.attachments

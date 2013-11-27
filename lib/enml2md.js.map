@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "enml2md.js",
+  "sourceRoot": "../coffee/",
+  "sources": [
+    "enml2md.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,CAAyB,IAAlB,OAAP,IAAyB;;CAAzB,CACA,CAAe,CAAf,GAAO,CAAQ;CADf"
+}

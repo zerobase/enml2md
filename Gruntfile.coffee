@@ -12,6 +12,8 @@ module.exports = (grunt) ->
 
     coffee:
       compile:
+        options:
+          sourceMap: true
         files: [
           {
             expand: true
@@ -20,7 +22,7 @@ module.exports = (grunt) ->
             src: ['**/*.coffee']
             dest: coffeeOutputDirectory
           }
-        ]
+        ],
 
     clean:
       lib: coffeeOutputDirectory

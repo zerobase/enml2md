@@ -49,7 +49,7 @@ describe 'Note', ->
     note = Note.parse note_enml
     hash = '095619d89dbbd6a0c5704d57e444f708'
     content_expected = ' The first line.\n\n' +
-      '![png image][0]\n\n' +
+      '![image/png][0]\n\n' +
       'The end line.\n\n\n\n' +
       '[0]: resources/' + hash + '/foo.png'
     describe '@content', ->

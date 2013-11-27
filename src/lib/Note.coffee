@@ -48,14 +48,16 @@ class Note
       .replace(/<en-note[^>]*>\s*/g, '')
       .replace(/<\/en-note>\s*/g, '')
       .replace(/]](--)?>\s*/g, '')
-      .replace(/<en-media[^>]*?type="(\w+)\/([^"]+)"[^>]*?hash="(\w+)"[^>]*?(\/>|><\/en-media>)?/g,
-        (match, type, subtype, hash) ->
-          f = note.attachments[hash].fileName
-          if type == 'image'
-            "<img alt=\"#{subtype} image\" src=\"resources/#{hash}/#{f}\"/>"
-          else
-            "<a href=\"resources/#{hash}/#{f}\">#{f}</a>")
-    @content = html2markdown note_content
+    $ = cheerio.load note_content
+    $('en-media').each ->
+      hash = $(this).attr('hash')
+      type = $(this).attr('type')
+      fileName = note.attachments[hash].fileName
+      if type.substr(0,5) == 'image'
+        $(this).replaceWith("<img alt=\"#{type}\" src=\"resources/#{hash}/#{fileName}\"/>")
+      else
+        $(this).replaceWith("<a href=\"resources/#{hash}/#{fileName}\">#{fileName}</a>")
+    @content = html2markdown $.html()
 
 
 Note.parse = (enml_note) -> # returns a Note object.

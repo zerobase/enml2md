@@ -9,26 +9,37 @@ module.exports = (grunt) ->
     coffee:
       options:
         sourceMap: true
-      src:
+      lib:
         files: [
           {
             expand: true
             ext: '.js'
+            cwd: 'src/lib'
             src: ['**/*.coffee']
-            cwd: 'coffee'
-            dest: 'js'
+            dest: 'lib'
+          }
+        ]
+      test:
+        files: [
+          {
+            expand: true
+            ext: '.js'
+            cwd: 'src/test'
+            src: ['**/*.coffee']
+            dest: 'test'
           }
         ]
 
     clean:
-      js: ["js/**"]
+      lib: ["lib/**"]
+      test: ["test/**"]
 
     copy:
       fixtures:
         expand: true
-        cwd: 'coffee/test'
+        cwd: 'src/test'
         src: ['fixtures/**']
-        dest: 'js/test/'
+        dest: 'test'
 
     simplemocha:
       options:
@@ -38,14 +49,14 @@ module.exports = (grunt) ->
         ui: 'bdd'
         reporter: 'spec'
       all:
-        src: "js/test/**/*.js"
+        src: 'test/**/*.js'
 
     watch:
       coffee:
-        files: "coffee/**/*.coffee",
+        files: "src/**/*.coffee",
         tasks: ['coffee']
       test:
-        files: "coffee/**/*.coffee",
+        files: "src/**/*.coffee",
         tasks: ['test']
 
   grunt.registerTask 'build', ['clean', 'coffee']

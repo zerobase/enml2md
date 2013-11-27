@@ -1,0 +1,6 @@
+<note><title>a single note fixture/test: 1</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
+<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div>fixture content</div>
+</en-note>
+]]></content><created>20131102T100709Z</created><updated>20131102T100713Z</updated><tag>markdown</tag><tag>evernote</tag><note-attributes><latitude>35.70534364879275</latitude><longitude>139.648108324694</longitude><altitude>44.23856353759766</altitude><author>Hideto Ishibashi</author><reminder-order>0</reminder-order></note-attributes></note>

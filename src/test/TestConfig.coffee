@@ -3,6 +3,7 @@ exports.fixtures =
   '2': 'test/fixtures/fixture2.enex'
   '3': 'test/fixtures/fixture3.enex'
   '4': 'test/fixtures/fixture4.enex'
+  '5': 'test/fixtures/fixture5.enex'
   'note': 'test/fixtures/note.enex'
   'image': 'test/fixtures/fixture_image.enex'
   'pngImage': 'test/fixtures/fixture_image.png'

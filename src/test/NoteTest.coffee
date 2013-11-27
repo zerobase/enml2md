@@ -82,4 +82,10 @@ describe 'Note', ->
     describe '@attachments', ->
       it 'are loaded.', ->
         note.attachmentsLength.should.equal 1
-        
+
+  describe 'with <en-media></en-media> tag', ->
+    note_enml = fs.readFileSync TestConfig.fixtures['5']
+    note = Note.parse note_enml
+    describe '@attachments', ->
+      it 'are loaded.', ->
+        note.attachmentsLength.should.equal 1

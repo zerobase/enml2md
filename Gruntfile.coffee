@@ -31,8 +31,8 @@ module.exports = (grunt) ->
         ],
 
     clean:
-      lib: ["lib/**/*.{js,js.map}"]
-      test: ["test/**/*.{js,js.map}"]
+      lib: ["lib/**/*.{js,js.map,map}"]
+      test: ["test/**/*.{js,js.map,map}"]
 
     simplemocha:
       options:

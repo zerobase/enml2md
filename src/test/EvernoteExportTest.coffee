@@ -49,6 +49,15 @@ describe "EvernoteExport(enml_filename)", ->
             md5.read().should.equal "095619d89dbbd6a0c5704d57e444f708"
             done err
           fd.pipe md5
+    it "creates attachment files without <file-name>", (done) ->
+      temp.mkdir "enml2md", (err, dirPath) ->
+        throw err if err
+        enex = new EvernoteExport TestConfig.fixtures['4']
+        resourceDir = dirPath + "/resources"
+        filePath = resourceDir + "/ce33294de7e0db8c113933fcafffc3d2.png"
+        enex.export dirPath, ->
+          fs.existsSync(filePath).should.be.true
+          done()
     it "can be called without a callback", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
         enex = new EvernoteExport TestConfig.fixtures['1']

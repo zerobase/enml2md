@@ -12,7 +12,7 @@ describe 'Note', ->
       it 'returns a note object.', ->
         note.should.be.an.instanceof(Note)
     
-    describe '#filename(extention)', ->
+    describe '#filename(extension)', ->
       it 'escapes title string.', ->
         note.filename('.md').should.equal 'a single note fixture test  1.md'
         note.filename('.txt').should.equal 'a single note fixture test  1.txt'

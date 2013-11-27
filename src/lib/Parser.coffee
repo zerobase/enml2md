@@ -28,6 +28,7 @@ class Parser
       data = new Buffer this.find('data').text(), 'base64'
       attachment = new Attachment
       attachment.loadData data
+      attachment.type = this.find('mime').text()
       attachment.setFileName this.find('file-name').text()
       note.pushAttachment attachment
     note.loadENMLContent $note.find('content').html()

@@ -1,11 +1,12 @@
 crypto = require "crypto"
+mime = require 'mime'
 
 class Attachment
   constructor: () ->
     @data = null # data string (base64)
     @hash = null # MD5 hash string
     @fileName = null # file basename string
-    @extention = null # file extention string
+    @type = null # MIME type string
 
   loadData: (data) ->
     @data = data
@@ -19,24 +20,27 @@ class Attachment
     hash = md5.read()
 
   setFileName: (fileName) ->
-    @fileName = fileName
-    split = fileName.split(".")
-    @extention = split[split.length - 1]
-  
+    if fileName && fileName.length > 0
+      @fileName = fileName
+
   exportFileName: () ->
-    @getHash() + '/' + @fileName
+    if @fileName
+      @getHash() + '/' + @fileName
+    else
+      @getHash() + '.' + @getExtension()
 
   getHash: () ->
-    unless @hash
-      throw "Data should be loaded before."
+    throw "Data should be loaded before." unless @hash
     @hash
 
-  getExtention: () ->
-    unless @extention
-      throw "File extention should be set before."
-    @extention
+  getExtension: () ->
+    if @fileName
+      split = @fileName.split(".")
+      split[split.length - 1]
+    else
+      mime.extension @type
 
   toString: () ->
-    "fileName: #{@fileName}, @hash: #{@hash}, @extention: #{@extention}, @data.length: #{@data.length}"
+    "fileName: #{@fileName}, @hash: #{@hash}, @extension: #{@extension}, @data.length: #{@data.length}"
 
 exports.Attachment = Attachment

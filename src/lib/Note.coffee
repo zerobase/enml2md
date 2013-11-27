@@ -14,10 +14,10 @@ class Note
     this.attachments = {} # { 'MD5 hash' => Attachment object }
     this.attachmentsLength = 0
 
-  filename: (extention) ->
+  filename: (extension) ->
     filename = this.title.replace /[\/:]/g, ' '
-    extention = extention || '.md'
-    filename + extention
+    extension = extension || '.md'
+    filename + extension
   
   toString: () ->
     # attachments: not included.

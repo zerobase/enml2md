@@ -7,7 +7,7 @@
     "enml2md": "./bin/enml2md"
   },
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script --reporter spec"
+    "test": "grunt test"
   },
   "main": "./lib/enml2md",
   "repository": {

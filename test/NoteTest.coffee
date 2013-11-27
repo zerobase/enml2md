@@ -75,3 +75,11 @@ describe 'Note', ->
         note.attachmentsLength.should.equal 2
         note.attachments['b1946ac92492d2347c6235b4d2611184'].fileName.should.equal 'hello.txt'
         note.attachments['591785b794601e212b260e25925636fd'].fileName.should.equal 'world.txt'
+
+  describe 'with multiple <en-media> tag for a single <resource>', ->
+    note_enml = fs.readFileSync TestConfig.fixtures['4']
+    note = Note.parse note_enml
+    describe '@attachments', ->
+      it 'are loaded.', ->
+        note.attachmentsLength.should.equal 1
+        

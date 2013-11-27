@@ -48,7 +48,7 @@ class Note
       .replace(/<en-note[^>]*>\s*/g, '')
       .replace(/<\/en-note>\s*/g, '')
       .replace(/]](--)?>\s*/g, '')
-      .replace(/<en-media type="(\w+)\/([^"]+)"[^>]*?hash="(\w+)"[^>]*?\/>/g,
+      .replace(/<en-media[^>]*?type="(\w+)\/([^"]+)"[^>]*?hash="(\w+)"[^>]*?\/>/g,
         (match, type, subtype, hash) ->
           if type == 'image'
             # f = note.attachments[hash].fileName

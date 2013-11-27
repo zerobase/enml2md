@@ -1,7 +1,3 @@
-coffeeDirectory = 'coffee'
-coffeeOutputDirectory = 'lib'
-testDirectory = 'test'
-
 module.exports = (grunt) ->
   pkg = grunt.file.readJSON 'package.json'
   for t of pkg.devDependencies
@@ -11,21 +7,32 @@ module.exports = (grunt) ->
   grunt.initConfig
 
     coffee:
-      compile:
-        options:
-          sourceMap: true
+      options:
+        sourceMap: true
+      lib:
         files: [
           {
             expand: true
             ext: '.js'
-            cwd: coffeeDirectory
             src: ['**/*.coffee']
-            dest: coffeeOutputDirectory
+            cwd: 'lib'
+            dest: 'lib'
+          }
+        ],
+      test:
+        files: [
+          {
+            expand: true
+            ext: '.js'
+            src: ['**/*.coffee']
+            cwd: 'test'
+            dest: 'test'
           }
         ],
 
     clean:
-      lib: coffeeOutputDirectory
+      lib: ["lib/**/*.{js,js.map}"]
+      test: ["test/**/*.{js,js.map}"]
 
     simplemocha:
       options:
@@ -36,11 +43,11 @@ module.exports = (grunt) ->
         reporter: 'spec'
         compilers: 'coffee:coffee-script'
       all:
-        src: "#{testDirectory}/**/*.coffee"
+        src: "test/**/*.js"
 
     watch:
       coffee:
-        files: "#{coffeeDirectory}/**/*.coffee",
+        files: "lib/**/*.coffee",
         tasks: ['coffee']
       test:
         files: ['**/*.coffee'],
@@ -48,5 +55,5 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build', ['clean', 'coffee']
   grunt.registerTask 'dev', ['test', 'watch']
-  grunt.registerTask 'test', ['simplemocha']
+  grunt.registerTask 'test', ['build', 'simplemocha']
   grunt.registerTask 'default', ['build']

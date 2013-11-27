@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "Parser.js",
-  "sourceRoot": "../coffee/",
+  "sourceRoot": "",
   "sources": [
     "Parser.coffee"
   ],

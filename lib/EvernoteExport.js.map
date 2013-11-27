@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "EvernoteExport.js",
-  "sourceRoot": "../coffee/",
+  "sourceRoot": "",
   "sources": [
     "EvernoteExport.coffee"
   ],

@@ -1,5 +1,5 @@
 TestConfig = require("./TestConfig")
-Attachment = require('../coffee/Attachment').Attachment
+Attachment = require('../lib/Attachment').Attachment
 should = require 'should'
 util = require 'util'
 fs = require 'fs'

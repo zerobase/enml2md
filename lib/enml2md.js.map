@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "enml2md.js",
-  "sourceRoot": "../coffee/",
+  "sourceRoot": "",
   "sources": [
     "enml2md.coffee"
   ],

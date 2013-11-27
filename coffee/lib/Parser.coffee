@@ -1,69 +1,36 @@
 fs = require 'graceful-fs'
-sax = require 'sax'
+cheerio = require 'cheerio'
 Note = require('./Note').Note
 Attachment = require('./Attachment').Attachment
 
 class Parser
 
-  constructor: (enex, cbEach, cbEnd) ->
-
-    strict = true # sax.parser: set to false for html-mode
-
-    @saxParser = saxParser = sax.parser strict, {trim: false, normalize: false}
-    
-    @saxParser.ontextHandlers =
-
-      'title': (text) ->
-        saxParser.note.title = text
-
-      'created': (text) ->
-        saxParser.note.created = Note.parseENMLDate text
-
-      'updated': (text) ->
-        saxParser.note.updated = Note.parseENMLDate text
-
-      'tag': (text) ->
-        saxParser.note.tags.push text
-
-      'data': (text) ->
-        data = new Buffer text, 'base64'
-        attachment = saxParser.currentAttachment
-        attachment.loadData data
-        saxParser.note.pushAttachment attachment
-
-      'file-name': (fileName) ->
-        saxParser.currentAttachment.setFileName fileName
-
-    @saxParser.onopentag = (node) ->
-      this.currentElement = node.name
-      switch node.name
-        when 'note'
-          this.note = new Note
-        when 'resource'
-          this.currentAttachment = new Attachment
-
-    @saxParser.onclosetag = (nodeName) ->
-      if nodeName == 'note'
-        enex.count = enex.count + 1
-        cbEach this.note if cbEach
-
-    @saxParser.ontext = (text) ->
-      handler = this.ontextHandlers[this.currentElement]
-      if typeof handler == 'function'
-        handler(text)
-
-    @saxParser.oncdata = (text) ->
-      this.cdata = text
-
-    @saxParser.onclosecdata = () ->
-      this.note.loadENMLContent this.cdata
-
-    @saxParser.onend = () ->
-      cbEnd() if cbEnd
+  constructor: (@enex, @cbEach, @cbEnd) ->
 
   parse: (filename) ->
-    saxParser = @saxParser
-    fs.readFile filename, 'utf8', (error, file) ->
-      saxParser.write( file.toString() ).close()
+    parser = this
+    fs.readFile filename, 'utf8', (error, fileContent) ->
+      $ = cheerio.load fileContent
+      $('note').each ->
+        parser.enex.count += 1
+        note = parser._composeNote $(this)
+        parser.cbEach note if parser.cbEach
+      parser.cbEnd() if parser.cbEnd
+
+  _composeNote: ($note) ->
+    note = new Note
+    note.title = $note.find('title').text()
+    note.created = Note.parseENMLDate $note.find('created').text()
+    note.updated = Note.parseENMLDate $note.find('updated').text()
+    $note.find('tag').each ->
+      note.tags.push this.text()
+    $note.find('resource').each ->
+      data = new Buffer this.find('data').text(), 'base64'
+      attachment = new Attachment
+      attachment.loadData data
+      attachment.setFileName this.find('file-name').text()
+      note.pushAttachment attachment
+    note.loadENMLContent $note.find('content').html()
+    note
 
 exports.Parser = Parser

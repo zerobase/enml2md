@@ -1,6 +1,6 @@
 {
   "name": "enml2md",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Ishibashi Hideto <me@ishibashihideto.net>",
   "description": "Evernote Markup Language to Markdown Converter",
   "bin": {

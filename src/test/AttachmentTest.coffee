@@ -3,6 +3,7 @@ Attachment = require('../lib/Attachment').Attachment
 should = require 'should'
 util = require 'util'
 fs = require 'fs'
+path = require 'path'
 
 describe 'Attachment', () ->
   describe '#setFileName(fileName)', () ->
@@ -12,15 +13,16 @@ describe 'Attachment', () ->
       attachment.fileName.should.equal 'a.b.c.jpg'
   describe '#exportFileName()', () ->
     it 'returns "{{hash}}/{{filename}}" with filename', () ->
+      pngImage = fs.readFileSync TestConfig.fixtures['image.png']
+      expectedFileName = "#{TestConfig.fixtures['image.png.hash']}/a.b.c.jpg"
       attachment = new Attachment
-      pngImage = fs.readFileSync TestConfig.fixtures['pngImage']
       attachment.setFileName 'a.b.c.jpg'
       attachment.loadData pngImage
-      attachment.exportFileName().should.equal '095619d89dbbd6a0c5704d57e444f708/a.b.c.jpg'
+      attachment.exportFileName().should.equal expectedFileName
     it 'returns "{{hash}}.{{extension}}" without filename', () ->
-      attachment = new Attachment
       pngImage = fs.readFileSync TestConfig.fixtures['ce332.png']
+      attachment = new Attachment
       attachment.type = 'image/jpeg'
       attachment.setFileName ''
       attachment.loadData pngImage
-      attachment.exportFileName().should.equal 'ce33294de7e0db8c113933fcafffc3d2.jpeg'
+      attachment.exportFileName().should.equal "#{path.basename(TestConfig.fixtures['ce332.png.hash'])}.jpeg"

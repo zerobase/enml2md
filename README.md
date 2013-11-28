@@ -8,14 +8,14 @@ Enml2md converts an Evernote export format (ENML, .enex) into Markdown (.md) fil
 Install
 -------
 
-	$ git clone git@github.com:zerobase/enml2md.git
-	$ npm install
-	$ npm test
+    $ git clone git@github.com:zerobase/enml2md.git
+    $ npm install
+    $ npm test
 
 Usage
 -----
 
-  $ node bin/enml2md <export.enex> <export_directory>
+    $ node bin/enml2md <export.enex> <export_directory>
 
 Requirements
 ------------

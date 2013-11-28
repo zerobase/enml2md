@@ -12,12 +12,12 @@ class Attachment
     @data = data
     @hash = this._hash(data)
   
-  _hash: (data) ->
+  _hash: () ->
     md5 = crypto.createHash "md5"
     md5.setEncoding "hex"
     md5.write @data
     md5.end()
-    hash = md5.read()
+    md5.read()
 
   setFileName: (fileName) ->
     if fileName

@@ -12,23 +12,25 @@ describe "EvernoteExport(enml_filename)", ->
   describe "#export(directory, cbDone)", ->
     it "creates an export directory", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport TestConfig.fixtures['1']
+        enex = new EvernoteExport TestConfig.fixtures['1_note.enex']
         enex.export dirPath, ->
           fs.stat dirPath, (err, stats) ->
             stats.isDirectory().should.be.true
             done err
     it "creates exported files", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport TestConfig.fixtures['2']
+        enex = new EvernoteExport TestConfig.fixtures['2_notes.enex']
         enex.export dirPath, ->
-          fs.stat dirPath + "/Enml2md test fixture note 1.md", (err, stats) ->
+          fileName0 = dirPath + "/" + TestConfig.fixtures['2_notes.enex.fileName0']
+          fileName1 = dirPath + "/" + TestConfig.fixtures['2_notes.enex.fileName1']
+          fs.stat fileName0, (err, stats) ->
             stats.isFile().should.be.true
-            fs.stat dirPath + "/Enml2md test fixture note 2.md", (err, stats) ->
+            fs.stat fileName1, (err, stats) ->
               stats.isFile().should.be.true
               done err
     it "creates an attachment direcotry", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport TestConfig.fixtures['1']
+        enex = new EvernoteExport TestConfig.fixtures['1_note.enex']
         enex.export dirPath, ->
           fs.stat dirPath + "/resources", (err, stats) ->
             stats.isDirectory().should.be.true
@@ -36,9 +38,10 @@ describe "EvernoteExport(enml_filename)", ->
     it "creates attachment files", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
         throw err if err
-        enex = new EvernoteExport TestConfig.fixtures['image']
+        enex = new EvernoteExport TestConfig.fixtures['image.enex']
         resourceDir = dirPath + "/resources"
-        filePath = resourceDir + "/095619d89dbbd6a0c5704d57e444f708/foo.png"
+        hash = TestConfig.fixtures['image.png.hash']
+        filePath = resourceDir + "/#{hash}/foo.png"
         enex.export dirPath, ->
           fs.statSync(filePath).isFile().should.be.true
           fd = fs.createReadStream filePath
@@ -46,21 +49,22 @@ describe "EvernoteExport(enml_filename)", ->
           md5.setEncoding "hex"
           fd.on "end", ->
             md5.end()
-            md5.read().should.equal "095619d89dbbd6a0c5704d57e444f708"
+            md5.read().should.equal hash
             done err
           fd.pipe md5
     it "creates attachment files without <file-name>", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
         throw err if err
-        enex = new EvernoteExport TestConfig.fixtures['4']
+        enex = new EvernoteExport TestConfig.fixtures['file-name.enex']
         resourceDir = dirPath + "/resources"
-        filePath = resourceDir + "/ce33294de7e0db8c113933fcafffc3d2.png"
+        hash = TestConfig.fixtures['ce332.png.hash']
+        filePath = "#{resourceDir}/#{hash}.png"
         enex.export dirPath, ->
           fs.existsSync(filePath).should.be.true
           done()
     it "can be called without a callback", (done) ->
       temp.mkdir "enml2md", (err, dirPath) ->
-        enex = new EvernoteExport TestConfig.fixtures['1']
+        enex = new EvernoteExport TestConfig.fixtures['1_note.enex']
         enex.export dirPath
         testDone = ->
           enex.count.should.equal 1
@@ -72,7 +76,7 @@ describe "EvernoteExport(enml_filename)", ->
   
   describe "#each(cbEach, cbEnd)", ->
     it "sets total @count at cbEnd()", (done) ->
-      enex = new EvernoteExport TestConfig.fixtures['2']
+      enex = new EvernoteExport TestConfig.fixtures['2_notes.enex']
       cbEach = (note) -> # callback for each note
         # do nothing
       cbEnd = -> # callback for the end
@@ -80,9 +84,9 @@ describe "EvernoteExport(enml_filename)", ->
         done()
       enex.each cbEach, cbEnd
     it "calls cbEach(note)", (done) ->
-      enex = new EvernoteExport TestConfig.fixtures['1']
-      expected_created = new Date 2013, 10, 2, 10, 0-TestConfig.TZOffsetMinutes, 55 # 20131102T100055Z
-      expected_updated = new Date 2013, 10, 2, 10, 3-TestConfig.TZOffsetMinutes, 49 # 20131102T100349Z
+      enex = new EvernoteExport TestConfig.fixtures['1_note.enex']
+      expected_created = TestConfig.fixtures['1_note.enex.created']
+      expected_updated = TestConfig.fixtures['1_note.enex.updated']
       cbEach = (note) -> # callback for each note
         note.title.should.equal "Enml2md test fixture note"
         note.created.should.eql expected_created
@@ -96,13 +100,13 @@ describe "EvernoteExport(enml_filename)", ->
         done()
       enex.each cbEach, cbEnd
     it "can be called without cbEach()", (done) ->
-      enex = new EvernoteExport TestConfig.fixtures['2']
+      enex = new EvernoteExport TestConfig.fixtures['2_notes.enex']
       cbEnd = -> # callback for the end
         enex.count.should.equal 2
         done()
       enex.each null, cbEnd
     it "can be called without both beEach() and cbEnd()", (done) ->
-      enex = new EvernoteExport TestConfig.fixtures['2']
+      enex = new EvernoteExport TestConfig.fixtures['2_notes.enex']
       testDone = ->
         enex.count.should.equal 2 
         done()

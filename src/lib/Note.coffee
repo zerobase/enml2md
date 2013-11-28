@@ -62,22 +62,24 @@ class Note
 
 Note.parse = (enml_note) -> # returns a Note object.
   $ = cheerio.load enml_note
-  note = Note.withCheerio $
+  note = Note.composeNoteWithCheerio $('note')
   note
 
-Note.withCheerio = ($) -> # Cheerio object
+Note.composeNoteWithCheerio = ($note) -> # Cheerio object
   note = new Note
-  note.title = $('title').text()
-  note.created = Note.parseENMLDate $('created').text()
-  note.updated = Note.parseENMLDate $('updated').text()
-  $('tag').each (index) ->
-    note.tags[index] = $(this).text()
-  $('resource').each (index) ->
+  note.title = $note.find('title').text()
+  note.created = Note.parseENMLDate $note.find('created').text()
+  note.updated = Note.parseENMLDate $note.find('updated').text()
+  $note.find('tag').each ->
+    note.tags.push this.text()
+  $note.find('resource').each ->
+    data = new Buffer this.find('data').text(), 'base64'
     attachment = new Attachment
-    attachment.loadData new Buffer $(this).find('data').text(), 'base64'
+    attachment.loadData data
+    attachment.type = this.find('mime').text()
+    attachment.setFileName this.find('file-name').text()
     note.pushAttachment attachment
-    attachment.setFileName $(this).find('file-name').text()
-  note.loadENMLContent $('content').html()
+  note.loadENMLContent $note.find('content').html()
   note
 
 Note.parseENMLDate = (string) -> # return a Date object.

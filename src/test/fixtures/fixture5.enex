@@ -1,84 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export3.dtd">
 <en-export export-date="20131127T200551Z" application="Evernote" version="Evernote Mac 5.4.3 (402230)">
-<note><title>iPad、ダイナブック、プログラミング、ユーザー参加デザイン</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<note><title>Fixture5: with &lt;en-media&gt;&lt;/en-media&gt; tag</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
-<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; "><div><p><a href="http://twitter.com/zerobase/status/12992092489" target="_blank"></a></p><a href="http://twitter.com/zerobase/status/12992092489" target="_blank"></a></div><a href="http://twitter.com/zerobase/status/12992092489" target="_blank"></a><div><a href="http://twitter.com/zerobase/status/12992092489" target="_blank"></a><div><div><div><br /></div><div><div><p>近代的設計者像を批判しつつ、設計者不要論でもない。この文脈では 超線形設計プロセスに興味津々。わざわざ手足を縛っておいて、それはできません、と宣言するマッチポンプに、事前に合意させる。頓智が利いてる。そういえ ば民主政・社会契約論ってそんなもんだよね。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12994396578" target="_blank">16:53:51</a>
-</p></div><div><p>この「ユーザー参加の設計プロセス」と、さっきの「プログラミング という言葉の捉え方が狭い」という話はつながっている。つまり「みんなのためのコンピュータ」には「みんなのためのプログラミング環境が必要」という発想 への批判。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12994260836" target="_blank">16:48:59</a>
-</p></div></div><div>つまり「ユーザー参加」とか、それが直接か間接かとか、問題ではな い。「ユーザーとアーキテクトは一つの生態系を形成している」とか「一つのシステムを形成して相互作用している」という捉え方。もちろん建築ではなくソフ トウェアで初めて具体的に見えてきたこと。
-</div><p>posted at <a href="http://twitter.com/zerobase/status/12993859947" target="_blank">16:34:49</a>
-</p></div><div><p>ソーシャルゲームをマッシブなログ解析で漸進的に改善している現実 を、ぼくは「ユーザー参加型の設計」と呼びたい気分だ
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993456121" target="_blank">16:20:47</a>
-</p></div><div><p>ユーザー／アーキテクトの二項対立と、それへの批判としてのアレグ ザンダーの方法と、それにより見えてくる次の展開。思うに、アレグザンダーは「ユーザーが設計に参加する」ことを狭く捉えていたのではないか。つまり直接 的な参加だけに。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993437399" target="_blank">16:20:09</a>
-</p></div><div><p>ユーザーはともかくアーキテクト側にはコンピューティング観のアン ラーニングが必要 RT <a href="http://twitter.com/sunaoh" target="_blank">@sunaoh</a>: あと、元々テレビ＋タイプライターという至極便宜的で過渡期のインターフェイスだったことは明らかななのにそのことが忘れされてきがちだったというか
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993392319" target="_blank">16:18:34</a>
-</p></div><div><p>ギブソン心理学的に面白そう RT <a href="http://twitter.com/orijox" target="_blank">@orijox</a>: ネコでもいじれる位ですしね。 <a href="http://j.mp/9KuImC" target="_blank">http://j.mp/9KuImC</a> RT <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> を触ってると、いかにキーボード＆マウスのVDTアーキテクチャが情報通信技術から（訓練されていない）人々を疎遠にしていたか
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993365952" target="_blank">16:17:40</a>
-</p></div><div><p>PCから場所の自由を獲得するとモバイルになるわけですが、今後は ユビキタス＆タンジブルの方向も RT <a href="http://twitter.com/shinsuke_" target="_blank">@shinsuke_</a>: <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> 万能を目指した分だけ IF の学習コストが高い PC と、機能を削った分だけ学習コストが低いスマートフォン・タブレットなのかしら。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993312878" target="_blank">16:15:48</a>
-</p></div><div><p>うっ・・・ｗ RT <a href="http://twitter.com/suketamajp" target="_blank">@suketamajp</a>: <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> よほどＰＣに恨みがあるんですかニャン♪
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993221572" target="_blank">16:12:35</a>
-</p></div><div><p>デジタルデバイドも使えない人の問題になりがちで使えない物／道具 を批判する議論は少ない？ RT <a href="http://twitter.com/sunaoh" target="_blank">@sunaoh</a>: これはとても大事な視点ですね　RT <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a>: いかにキーボード＆マウスのVDTアーキテクチャが情報通信技術から（訓練されていない）人々を疎遠にしていたか<br /></p></div><div><p>posted at <a href="http://twitter.com/zerobase/status/12993148326" target="_blank">16:10:06</a>
-</p></div><div><p>万能機械〈PC〉の利用シーンがスマートフォンやタッチ式タブレッ トに奪われ事務機器にまで解体還元 RT <a href="http://twitter.com/shinsuke_" target="_blank">@shinsuke_</a>: <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> キーボード + マウスみたいな不便なインターフェースをいつまで使わなきゃいけないのか教えてください。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12993074655" target="_blank">16:07:29</a>
-</p></div><div><p>RT <a href="http://twitter.com/nabetama" target="_blank">@nabetama</a>: <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> を触ってると、いかにキーボード＆マウスのVDTアーキテクチャが情報通信技術から（訓練されていない）人々を疎遠にしていたか、よくわかる。 /via <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> こういう視点もある。感嘆しました。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992860926" target="_blank">16:00:32</a>
-</p></div><div><p></p></div></div><div><div><p>ぼくはしばらく作業仮説として「そもそもキーボードを使うような作業がiPad向きではない」くらい極端に考えてみる。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992662139" target="_blank">15:53:59</a>
-</p></div><div><p>「 <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> にもソフトウェアキーボードがあるから安心」という〈PC〉パラダイムをいったん捨てないと、iPadならではの生活提案はできない。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992658753" target="_blank">15:53:52</a>
-</p></div><div><p><a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> を触ってると、いかにキーボード＆マウスのVDTアーキテクチャが情報通信技術から（訓練されていない）人々を疎遠にしていたか、よくわかる。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992621059" target="_blank">15:52:35</a>
-</p></div><div><p>RT <a href="http://twitter.com/itachihana" target="_blank">@itachihana</a>: 至言。RT <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a>: なんか <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> マニアみたいに見られそうだが、ぼくにとってはiPadすらどうでもいいのだ。non-PC&amp;タッチUIが拓く未来の生活に関心がある。そのため には技術中心ではなく人間中心のアーキテクトの努力が必要だ。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992501649" target="_blank">15:48:29</a></p></div><div><p><a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> 上のアプリケーションは「キーボードを使う必要を減らせば減らすほど生活に入っていきやすい」かもしれない。もちろん場合によるが。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992397129" target="_blank">15:44:56</a>
-</p></div><div><p>iPad, WePad, EeePad, Courier それらを従来の意味での〈PC〉と捉えるのはもったいない。従って「タブレットPC」という呼称を拒否する。ITジャーナリストの良い仕事を期待したい が、これは良い名を考え提案していくしかないな。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992352722" target="_blank">15:43:23</a>
-</p></div><div><p>なんか <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> マニアみたいに見られそうだが、ぼくにとってはiPadすらどうでもいいのだ。non-PC&amp;タッチUIが拓く未来の生活に関心がある。そのため には技術中心ではなく人間中心のアーキテクトの努力が必要だ。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12992310757" target="_blank">15:41:56</a>
-</p></div><div><p>メシくいながら見るなら <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> よりMacBook Airだな。画面がアップライト、立ってるのが見やすいのだ。<br /></p></div><div><p>posted at <a href="http://twitter.com/zerobase/status/12992092489" target="_blank">15:34:36</a></p></div></div><div><a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> はダイナブックか否か問題について。ダイナブックとして設計も宣伝もされてないものを、事後的にダイナブックか否かと論じること自体がナンセンス。ゆえに iPadはダイナブックだよ派の議論はそもそも成立しないのでは。
-</div><p>posted at <a href="http://twitter.com/zerobase/status/12991902763" target="_blank">15:28:30</a>
-</p></div><div><p>プログラミングはちょっと神秘主義的に語られすぎるのだ。ぼくも元 々CUI時代からasmプログラミングをやってるから分かるが。その世界に外に出てみると、やはり「プログラミング」の語られ方は教条主義的で狭い。議論 の足下を脱構築していく必要がある。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12991667001" target="_blank">15:20:52</a>
-</p></div><div><p><a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> に〈ダイナブック〉を対置して論じるのが不適切なら〈ダイナブック〉に代わる概念(言葉)が必要だ。それだけのこと。〈ダイナブック〉を論じたいわけでは ない。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12991449800" target="_blank">15:14:02</a>
-</p></div><div><p>.<a href="http://twitter.com/sumim" target="_blank">@sumim</a> 情報ありがとうございます。ちなみにぼくの立場はそもそもどっちでもないです。「iPadはダイナブックか」という問い自体に関心ないすね。
-</p><div>posted at <a href="http://twitter.com/zerobase/status/12991275889" target="_blank">15:08:39</a>
-</div><div><br /></div><div><div><p>そうそう、アプリがどこで実行されるかにこだわる必要もどんどん減ってくかも RT <a href="http://twitter.com/dotimpact" target="_blank">@dotimpact</a> <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> まあアプリで作ってもiPad自体は触れないわけだし、ホビープログラムならSaaS開発環境でいいんでしょうねー
-</p><div>posted at <a href="http://twitter.com/zerobase/status/12949694595" target="_blank">00:08:41</a>
-</div><div><br /></div><div><div><p>そう、そのへん今後の方針転換があるかどうかは気になるところ RT <a href="http://twitter.com/dotimpact" target="_blank">@dotimpact</a> . <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> <a href="http://twitter.com/4EX" target="_blank">@4EX</a> まあそのブロックプログラミングできるScratchのアプリを落としたりもしてますけどね <a href="http://bit.ly/aqcOXp" target="_blank">http://bit.ly/aqcOXp</a>
-</p><div>posted at <a href="http://twitter.com/zerobase/status/12949027819" target="_blank">23:54:40</a>
-</div><div><br /></div><div><div><p><a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> でプログラミングができるかどうかについては、「アラン・ケイの構想が実現されたか否か」に関心がある人と、「人々にとって有益か／いかにすれば人々の生 活をよりよくできるか」に関心がある人、の立場はすごく違う
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12948027298" target="_blank">23:32:30</a>
-</p></div><div><p>そう、問題は「ダイナブックかどうか」ではないし RT <a href="http://twitter.com/torumori" target="_blank">@torumori</a>: <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> 結構、その行為時代に感動しちゃってますw　感慨深いです。自分にとっては十分にiPad=DynaBookです。ご本人はどうおっしゃるかは分かりませ んが、それでいいんじゃないかと。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12947956263" target="_blank">23:30:56</a>
-</p></div><div><p>万能リモコン×Yahoo! Pipes的な何かとか RT <a href="http://twitter.com/4EX" target="_blank">@4EX</a>: iPadが彼らのスタイルに寄り添ってないだけでプログラミング自体はもっと簡単にできていいものでしょう。 RT <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> iPadはダイナブックではないよ派／〈プログラミング〉の捉え方が教条主義的すぎ
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12947917441" target="_blank">23:30:09</a>
-</p></div><div><p></p></div></div><div><div><p>iPadはダイナブックではないよ派がプログラミングできないこと にこだわるのはわかる。しかし、それは〈プログラミング〉の捉え方が教条主義的すぎるかもしれない。アラン・ケイの論文を読んで考えを深めたい。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12947398460" target="_blank">23:18:53</a>
-</p></div><div><p><a href="http://twitter.com/Horivish" target="_blank"></a></p><a href="http://twitter.com/Horivish" target="_blank"></a></div><a href="http://twitter.com/Horivish" target="_blank"></a></div><div><div><p>あとでよんどこ。機械翻訳つかお。⇨A Personal Computer for Children of All Ages. Alan Kay 1972 - <a href="http://mprove.de">mprove.de</a> <a href="http://bit.ly/aGetcH" target="_blank">http://bit.ly/aGetcH</a>
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12946829189" target="_blank">23:06:39</a>
-</p></div><div><p><a href="http://S.Jobs">S.Jobs</a>: Is the iPhone worth criticizing? A.Kay: Make the screen five inches by eight inches, and you’ll rule the world. <a href="http://bit.ly/aUm7F8" target="_blank">http://bit.ly/aUm7F8</a>
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12946413689" target="_blank">22:57:49</a>
-</p></div><div><p>名前以前に製品がダサいのからなあ RT <a href="http://twitter.com/xxkickerxx" target="_blank">@xxkickerxx</a>: では、カッコいい命名を！RT <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a>: WePadはダサいと思います RT <a href="http://twitter.com/xxkickerxx" target="_blank">@xxkickerxx</a>:気の利いた洒落w RT <a href="http://twitter.com/puremalt2010" target="_blank">@puremalt2010</a>: 名前はパクリに近い..IがWe
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12946305612" target="_blank">22:55:27</a>
-</p></div><div><p>〈PC〉的コンピューティング観からアラン・ケイ的 〈Personal Computing〉観への回帰こそ重要 RT <a href="http://twitter.com/nsiena" target="_blank">@nsiena</a>: <a href="http://twitter.com/nsiena" target="_blank">@nsiena</a> <a href="http://twitter.com/zerobase" target="_blank">@zerobase</a> 同意。PC的なものであれば、PCでやればいい。タブレットPC的でいまいちなものになりそうに思える。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12946243425" target="_blank">22:54:08</a>
-</p></div><div><p></p></div></div><div><p>正直に白状すると WePad の動画10分も見る気がしないので全部見てない。一見してあれすぎて評価する気も起きない。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12945660417" target="_blank">22:41:23</a>
-</p></div><div><div><p>WePadはモノのデザインだが <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> はコトのデザイン。物体と動作。名詞と動詞。PCと生活。根本的にインパクトが違う。
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12945604065" target="_blank">22:40:12</a>
-</p></div><div><p>WePadはダサいと思います <a href="http://bit.ly/dozAoW" target="_blank">http://bit.ly/dozAoW</a> RT <a href="http://twitter.com/xxkickerxx" target="_blank">@xxkickerxx</a>: 気の利いた洒落に思えましたけれどw RT <a href="http://twitter.com/puremalt2010" target="_blank">@puremalt2010</a>: 名前はパクリに近いでしょうねIがWeにｗ RT <a href="http://twitter.com/seamo1975" target="_blank">@seamo1975</a>: 単なるiPadのパクリかと
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12945535115" target="_blank">22:38:39</a>
-</p></div><div><p>WePadはイケてない。要点は、 <a href="http://twitter.com/search?q=%23iPad" target="_blank">#iPad</a> が重要なのではなく、iPad的なものが重要である点。つまり「non-PC＆タッチUI」が重要である。キーボードアレルギーの人々にも手が届く始めて のデバイス。それをPC的なものととらえるWePadは僕にとっては面白くない。 <a href="http://twitter.com/search?q=%23DUI" target="_blank">#DUI</a>
-</p><div>posted at <a href="http://twitter.com/zerobase/status/12945465113" target="_blank">22:37:06</a></div><div><div><p>non-PC&amp;タッチUIが拓く未来 RT <a href="http://twitter.com/puremalt2010" target="_blank">@puremalt2010</a>: 結局タッチパネルI/Fの進化のみでOSは関係なさげ・・・ RT <a href="http://twitter.com/thoton" target="_blank">@thoton</a>: 訳：悪くない。本当のiPadキラーはこれだと思うよ <a href="http://twitter.com/search?q=%23WePad" target="_blank">#WePad</a> <a href="http://bit.ly/ceGSMq" target="_blank">http://bit.ly/ceGSMq</a>
-</p><p>posted at <a href="http://twitter.com/zerobase/status/12941056802" target="_blank">20:58:40</a>
-</p></div><div><p></p></div></div><div><div><p>YouTube 動画をお気に入りに登録しました -- WePad Präsentation der Vorabversion <a href="http://youtu.be/dsgeWXGiaGg?a" target="_blank">http://youtu.be/dsgeWXGiaGg?a</a>
-</p><a href="http://youtu.be/dsgeWXGiaGg?a" target="_blank"><en-media width="120" height="90" type="image/jpeg" hash="4ae218e904a6775dbc28a3191b910e01"></en-media></a><p>posted at <a href="http://twitter.com/zerobase/status/12940906586" target="_blank">20:54:56</a>
-</p></div><div><p></p></div></div><div><br /></div></div></div></div><div><p><a href="http://twitter.com/aop358" target="_blank"></a></p><a href="http://twitter.com/aop358" target="_blank"></a></div><a href="http://twitter.com/aop358" target="_blank"></a></div><div><br /></div></div><div><a href="http://twilog.org/zerobase/date-100428"></a></div><a href="http://twilog.org/zerobase/date-100428"></a></div><div><br /></div></div></en-note>]]></content><created>20100428T063725Z</created><updated>20121109T132533Z</updated><tag>criticism</tag><tag>architecture</tag><tag>design</tag><tag>publish</tag><note-attributes><reminder-order>0</reminder-order></note-attributes><resource><data encoding="base64">/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAMCAgMCAgMDAgMDAwMDBAcFBAQEBAkGBwUHCgkLCwoJCgoM
+<en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">
+<div>Original title :iPad、ダイナブック、プログラミング、ユーザー参加デザイン</div>
+<div><p>YouTube 動画をお気に入りに登録しました -- WePad Präsentation der Vorabversion <a href="http://youtu.be/dsgeWXGiaGg?a" target="_blank">http://youtu.be/dsgeWXGiaGg?a</a>
+</p><a href="http://youtu.be/dsgeWXGiaGg?a" target="_blank"><en-media width="120" height="90" type="image/jpeg" hash="4ae218e904a6775dbc28a3191b910e01"></en-media></a><p>posted at <a href="http://twitter.com/zerobase/status/12940906586" target="_blank">20:54:56</a></p></div></en-note>]]></content><created>20100428T063725Z</created><updated>20121109T132533Z</updated><tag>criticism</tag><tag>architecture</tag><tag>design</tag><tag>publish</tag><note-attributes><reminder-order>0</reminder-order></note-attributes><resource><data encoding="base64">/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAMCAgMCAgMDAgMDAwMDBAcFBAQEBAkGBwUHCgkLCwoJCgoM
 DREODAwQDAoKDhQPEBESExMTCw4UFhQSFhESExIBAwMDBAQECAUFCBIMCgwSEhISEhISEhISEhISEhIS
 EhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEv/AABEIAFoAeAMBIgACEQEDEQH/xAAdAAAB
 AwUBAAAAAAAAAAAAAAAABQYHAQMECAkC/8QAQhAAAQMDAgMDCQUFBgcAAAAAAQIDBAAFEQYSByExE0FR

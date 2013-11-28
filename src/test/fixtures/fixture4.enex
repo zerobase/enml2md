@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export3.dtd">
 <en-export export-date="20131127T113952Z" application="Evernote" version="Evernote Mac 5.4.3 (402230)">
-<note><title>Jekyll のデバッグ</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<note><title>Fixture 4: an attachment file without &lt;file-name&gt;</title><content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
 <en-note style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
-<div><br/></div>
+<div>Original title: iPad、ダイナブック、プログラミング、ユーザー参加デザイン</div>
 <div>--</div>
 <div>2013-09-12</div>
 <div><br/></div>
@@ -12,11 +12,7 @@
 <tbody>
 <tr>
 <td width="52" height="52"><en-media width="52" height="52" type="image/png" hash="ce33294de7e0db8c113933fcafffc3d2"/></td>
-<td><b>zerobase</b><br/>
-<br/>
-あぁ、Liquid 2.5.2との組み合わせでバグるバージョンのJekyllが、GitHub Pagesにリリースされた…ぼくが送ったパッチはさっきマージされたばかりで、まだ適用されてない…（サイドバー消えた→ <a href="http://t.co/HJYajYDHAW">http://t.co/HJYajYDHAW</a><br/>
-<br/>
-<a href="https://twitter.com/zerobase/status/378124628759040000">2013/09/12 20:55</a></td>
+<td><b>zerobase</b></td>
 </tr>
 </tbody>
 </table>
@@ -25,11 +21,7 @@
 <tbody>
 <tr>
 <td width="52" height="52"><en-media width="52" height="52" type="image/png" hash="ce33294de7e0db8c113933fcafffc3d2"/></td>
-<td><b>zerobase</b><br/>
-<br/>
-こういうことあるとGitHub Pagesはヤバいなーと思う。手元のJekyllと同じ挙動が保証されない。ある意味ではstatic site generatorの良さが一つ失われてる。<br/>
-<br/>
-<a href="https://twitter.com/zerobase/status/378124778701201408">2013/09/12 20:55</a></td>
+<td><b>zerobase</b></td>
 </tr>
 </tbody>
 </table>
@@ -38,11 +30,7 @@
 <tbody>
 <tr>
 <td width="52" height="52"><en-media width="52" height="52" type="image/png" hash="ce33294de7e0db8c113933fcafffc3d2"/></td>
-<td><b>zerobase</b><br/>
-<br/>
-markdown.jpもAmazon S3に引っ越したくなってきました。<br/>
-<br/>
-<a href="https://twitter.com/zerobase/status/378124806677221376">2013/09/12 20:55</a></td>
+<td><b>zerobase</b</td>
 </tr>
 </tbody>
 </table>
@@ -51,39 +39,10 @@ markdown.jpもAmazon S3に引っ越したくなってきました。<br/>
 <tbody>
 <tr>
 <td width="52" height="52"><en-media width="52" height="52" type="image/png" hash="ce33294de7e0db8c113933fcafffc3d2"/></td>
-<td><b>zerobase</b><br/>
-<br/>
-これwatchしとけばGitHub PagesのJekyllとLiquidのバージョンが追えるな→pages-gem/github-pages.gemspec at master · github/pages-gem <a href="https://t.co/hKT9syT9wG">https://t.co/hKT9syT9wG</a><br/>
-<br/>
-<a href="https://twitter.com/zerobase/status/378126825425100800">2013/09/12 21:03</a></td>
+<td><b>zerobase</b></td>
 </tr>
 </tbody>
 </table>
-<div><br/></div>
-<div><br/></div>
-<div>---</div>
-<div>2013-09-12</div>
-<div><br/></div>
-<div>- merged: [test for the Jekyll's issue #1519: Liquid doesn't render my partial by zerobase · Pull Request #255 · Shopify/liquid](https://github.com/Shopify/liquid/pull/255)</div>
-<div>- merged: [a patch for the issue #1519: Liquid doesn't render my partial by zerobase · Pull Request #1525 · mojombo/jekyll](https://github.com/mojombo/jekyll/pull/1525)</div>
-<div><br/></div>
-<div>---</div>
-<div>2013-09-11</div>
-<div><br/></div>
-<div> - [Liquid doesn't render my partial · Issue #1519 · mojombo/jekyll](https://github.com/mojombo/jekyll/issues/1519)</div>
-<div>- [a patch for the issue #1519: Liquid doesn't render my partial by zerobase · Pull Request #1525 · mojombo/jekyll](https://github.com/mojombo/jekyll/pull/1525)</div>
-<div>- [test for the Jekyll's issue #1519: Liquid doesn't render my partial by zerobase · Pull Request #255 · Shopify/liquid](https://github.com/Shopify/liquid/pull/255)<br/></div>
-<div><br/></div>
-<div>Jekyllの挙動がおかしい問題で、JekyllとLiquidのテストを書いて問題がJekyll側にあることが判明した。Jekyllにパッチをプルリした。<br/></div>
-<div><br/></div>
-<div>時と場合によっては「プログラマー」と名乗ることに抵抗が無い程度にまでプログラミング能力が復活した感じ。とはいえ専業でやってる人には敵わない。 </div>
-<div><br/></div>
-<div>あと、改めて CI (continuous integration) の素晴らしさを再確認した。Travis CI と GitHub （の Pull Request）の連携は素晴らしい。</div>
-<div><br/></div>
-<div>---</div>
-<div><br/></div>
-<div>- liquid/test/liquid/tags/include_tag_test.rb</div>
-<div>- jekyll/test/test_post.rb:502: should &quot;include templates&quot;</div>
 </en-note>
 ]]></content><created>20130910T103017Z</created><updated>20130912T160310Z</updated><tag>jekyll</tag><note-attributes><latitude>35.69030665584359</latitude><longitude>139.7100128619693</longitude><altitude>54.02452087402344</altitude><author>Hideto Ishibashi</author><reminder-order>0</reminder-order></note-attributes><resource><data encoding="base64">iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AABAAElEQVR4Aey9SY+lyXWm+d3RxxgycmQm
 kxQ1slpUNVA9AN0bQWjUT9Bf0K4F9L6XDWjTK+lfSHtp0QttCrUolFoQugCNFClSZI4xeoRPd+rneY/Z

@@ -52,11 +52,13 @@ class Note
     $('en-media').each ->
       hash = $(this).attr('hash')
       type = $(this).attr('type')
-      fileName = note.attachments[hash].fileName
+      attachment = note.attachments[hash]
+      attachmentFileName = attachment.exportFileName()
+      displayAttachmentFileName = attachment.fileName || attachmentFileName
       if type.substr(0,5) == 'image'
-        $(this).replaceWith("<img alt=\"#{type}\" src=\"resources/#{hash}/#{fileName}\"/>")
+        $(this).replaceWith("<img alt=\"#{type}\" src=\"resources/#{attachmentFileName}\"/>")
       else
-        $(this).replaceWith("<a href=\"resources/#{hash}/#{fileName}\">#{fileName}</a>")
+        $(this).replaceWith("<a href=\"resources/#{attachmentFileName}\">#{displayAttachmentFileName}</a>")
     @content = html2markdown $.html()
 
 

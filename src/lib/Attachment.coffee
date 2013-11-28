@@ -20,11 +20,11 @@ class Attachment
     hash = md5.read()
 
   setFileName: (fileName) ->
-    if fileName && fileName.length > 0
+    if fileName
       @fileName = fileName
 
   exportFileName: () ->
-    if @fileName
+    if @fileName?
       @getHash() + '/' + @fileName
     else
       @getHash() + '.' + @getExtension()

@@ -23,8 +23,15 @@ class EvernoteExport
         cbDone() if cbDone
       enex.each eachProc, doneProc
 
+  _uniqueFilename: (filename) ->
+    buildFilename = () ->
+      filename + if i == 0 then "" else " (" + i + ")"
+    i = 0
+    i += 1 while fs.existsSync buildFilename()
+    buildFilename()
+
   _exportNote: (exportDirectory, note) ->
-    notePath = exportDirectory + '/' + note.filename()
+    notePath = this._uniqueFilename(exportDirectory + '/' + note.filename())
     fs.writeFileSync notePath, note.toString()
     fs.utimesSync notePath, note.updated, note.created
 
